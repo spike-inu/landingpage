@@ -44,9 +44,12 @@
     "start": "next start",
     "eject": "react-scripts eject",
     "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js --fix && stylelint '**/*.css' --fix",
     "format:check": "prettier --check '**/*.{js,jsx,ts,tsx}'",
     "format:write": "npx prettier --write '**/*.{js,jsx,ts,tsx}'",
-    "clean": "rm -rf .next node_modules package-*.json yarn-*.json *.lock && yarn"
+    "clean": "rm -rf .next node_modules package-*.json yarn-*.json *.lock && yarn",
+    "cypress:open": "cypress open",
+    "release": "standard-version -a",
   },
   "eslintConfig": {
     "extends": [
