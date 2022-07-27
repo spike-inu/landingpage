@@ -49,7 +49,7 @@
     "format:write": "npx prettier --write '**/*.{js,jsx,ts,tsx}'",
     "clean": "rm -rf .next node_modules package-*.json yarn-*.json *.lock && yarn",
     "cypress:open": "cypress open",
-    "release": "standard-version -a",
+    "release": "standard-version -a"
   },
   "eslintConfig": {
     "extends": [
