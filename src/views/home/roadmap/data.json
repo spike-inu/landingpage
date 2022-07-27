@@ -1,0 +1,196 @@
+[
+    {
+        "title": "Phase 1",
+        "contents": [
+            {
+                "title": "iCrosschain Features",
+                "contents": [
+                    "UX improvements",
+                    "New UI",
+                    "New iCrosschain\nLanding website",
+                    "Marketing"
+                ]
+            },
+            {
+                "title": "Blockchains",
+                "contents": [
+                    "Ethereum",
+                    "BSC",
+                    "Fantom",
+                    "Matic"
+                ]
+            },
+            {
+                "title": "Integrations",
+                "contents": [
+                    "Pancake swap",
+                    "Uniswap",
+                    "Spookyswap",
+                    "QuickSwap"
+                ]
+            },
+            {
+                "title": "Misc",
+                "contents": [
+                    "Documentations"
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Phase 2",
+        "contents": [
+            {
+                "title": "Integrations",
+                "contents": [
+                    "Sushiswap",
+                    "ShibaSwap",
+                    "DINOSwap",
+                    "DFYN",
+                    "TRADEJOE",
+                    "ButterSwap",
+                    "MDEX"
+                ]
+            },
+            {
+                "title": "Blockchains",
+                "contents": [
+                    "Avax",
+                    "Heco",
+                    "Terra",
+                    "OEC"
+                ]
+            },
+            {
+                "title": "Wallet",
+                "contents": [
+                    "Trust wallet",
+                    "Phantom",
+                    "Safepal wallet"
+                ]
+            },
+            {
+                "title": "Misc",
+                "contents": [
+                    "Marketing"
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Phase 3",
+        "contents": [
+            {
+                "title": "Token",
+                "contents": [
+                    "iCrosschain token (ICC) IDO"
+                ]
+            },
+            {
+                "title": "Blockchains",
+                "contents": [
+                    "Near",
+                    "One",
+                    "Celo"
+                ]
+            },
+            {
+                "title": "Integrations",
+                "contents": [
+                    "BabySwap",
+                    "JetSwap",
+                    "APESwap",
+                    "BakerySwap",
+                    "LatteSwap",
+                    "BHX Swap"
+                ]
+            },
+            {
+                "title": "Wallet",
+                "contents": [
+                    "Coin98",
+                    "Nabox",
+                    "Harmony One"
+                ]
+            },
+            {
+                "title": "MISC",
+                "contents": [
+                    "End to beta",
+                    "Marketing"
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Phase 4",
+        "contents": [
+            {
+                "title": "Defi",
+                "contents": [
+                    "Farm",
+                    "Pool",
+                    "Lending"
+                ]
+            },
+            {
+                "title": "Blockchains",
+                "contents": [
+                    "Ada",
+                    "Osmosis",
+                    "Onto",
+                    "Solana",
+                    "Pokadot",
+                    "Build Bridge"
+                ]
+            },
+            {
+                "title": "Wallet",
+                "contents": [
+                    "Clover",
+                    "Binance",
+                    "Coinbase wallet"
+                ]
+            },
+            {
+                "title": "MISC",
+                "contents": [
+                    "Marketing"
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Phase 5",
+        "contents": [
+            {
+                "title": "Update more roadmap",
+                "contents": []
+            },
+            {
+                "title": "Intergrations",
+                "contents": []
+            },
+            {
+                "title": "Anywhere the users go",
+                "contents": []
+            },
+            {
+                "title": "We will support trending 2023 protocols",
+                "contents": []
+            },
+            {
+                "title": "And wallets in this quarter",
+                "contents": []
+            },
+            {
+                "title": "Possible Token idea",
+                "contents": []
+            },
+            {
+                "title": "ICC NFT",
+                "contents": []
+            }
+        ]
+    }
+]

@@ -1,0 +1,34 @@
+{
+    "items": [
+        {
+            "href": "/",
+            "title": "Swap",
+            "subs": []
+        },
+        {
+            "href": "/",
+            "title": "Stake",
+            "subs": []
+        },
+        {
+            "href": "/",
+            "title": "Token",
+            "subs": []
+        },
+        {
+            "href": "/",
+            "title": "DAO",
+            "subs": []
+        },
+        {
+            "href": "/",
+            "title": "Docs",
+            "subs": []
+        },
+        {
+            "href": "/",
+            "title": "More",
+            "subs": []
+        }
+    ]
+}
