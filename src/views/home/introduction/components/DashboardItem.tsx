@@ -1,4 +1,4 @@
-import { Stack, Subtitle, Text, Title, styled } from 'components';
+import { Stack, Text, Title, styled } from 'components';
 import React from 'react';
 import { DashboardProps } from '../types';
 
@@ -12,19 +12,16 @@ const Wrapper = styled(Stack)`
   transition: 0.5s;
 `;
 
-const View: React.FC<DashboardProps> = ({ Icon, name, unit, value }) => {
+const View: React.FC<DashboardProps> = ({ name, unit, value }) => {
   return (
     <Wrapper>
-      <Icon width={200} />
-      <Stack direction="row" spacing={0} alignItems="baseline">
-        <Title variant="h3" color="primary.main" sx={{ userSelect: 'none', fontWeight: 600 }}>
-          {value}
-        </Title>
-        <Subtitle variant="h5" color="primary.main" sx={{ userSelect: 'none' }}>
-          {unit}
-        </Subtitle>
-      </Stack>
-      <Text sx={{ userSelect: 'none' }}>{name}</Text>
+      {/* <Icon width={200} /> */}
+      <Text fontSize={28} fontWeight={600} sx={{ userSelect: 'none' }}>
+        {value} {unit}
+      </Text>
+      <Text mt={2} sx={{ userSelect: 'none' }}>
+        {name}
+      </Text>
     </Wrapper>
   );
 };

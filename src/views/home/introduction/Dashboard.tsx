@@ -1,4 +1,4 @@
-import { Grid, Stack, Subtitle, Title, Text } from 'components';
+import { Grid, Stack, Text } from 'components';
 import React from 'react';
 import DashboardItem from './components/DashboardItem';
 import data from './data';
@@ -6,7 +6,7 @@ import useDetect from 'hooks/useDetect';
 
 const Desktop: React.FC = () => {
   return (
-    <Grid maxWidth="lg" container sx={{ mt: -30, py: 10 }} spacing={5} justifyContent="space-between">
+    <Grid maxWidth="lg" container mt={5} px={20} spacing={5} justifyContent="space-between">
       {data.dashboards.map((item, index) => {
         return (
           <Grid item xs={3} md={3} key={index}>

@@ -19,3 +19,8 @@ export interface SocialProps {
   index?: number;
   active?: boolean;
 }
+
+export interface PartnershipProps {
+  title: string;
+  description: string;
+}

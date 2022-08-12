@@ -1,5 +1,10 @@
+export interface ItemContentProps {
+  title: string;
+  contents: Array<string>;
+}
+
 export interface ItemProps {
   title: string;
-  contents: Array<{ title: string; contents: Array<string> }>;
-  index?: number;
+  contents: Array<ItemContentProps>;
+  inactive?: boolean;
 }

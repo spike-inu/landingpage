@@ -3,22 +3,27 @@ import React from 'react';
 import { HowToUseItemProps } from './types';
 
 const View: React.FC<HowToUseItemProps> = (props) => {
-  const { Icon, title, description, index } = props;
+  const { title, index } = props;
   return (
     <Stack direction="row" spacing={4} alignItems="center">
-      <Stack width={60}>
-        <Icon />
+      <Stack
+        bgcolor="#202020"
+        borderRadius="50%"
+        width={50}
+        height={50}
+        alignItems="center"
+        justifyContent="center"
+        fontSize={20}
+        fontWeight={600}
+        color="rgba(255, 255, 255, 0.47)"
+      >
+        {index + 1}
       </Stack>
-
-      <Stack>
-        <Stack direction="row" spacing={1}>
-          <Text color="primary.main" fontWeight="bold">
-            {index + 1}.
-          </Text>
-          <Text fontWeight="bold">{title}</Text>
-        </Stack>
-
-        {/* <Text color="text.disabled">{description}</Text> */}
+      <Stack flexDirection="row">
+        <Text color="primary.main" fontSize={16}>
+          {title.slice(0, title.indexOf(' '))}
+        </Text>
+        <Text fontSize={16}>{title.slice(title.indexOf(' '))}</Text>
       </Stack>
     </Stack>
   );

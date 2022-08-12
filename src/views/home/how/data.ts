@@ -4,10 +4,11 @@ import Send from './icons/Send';
 import WalletA from './icons/WalletA';
 import { HowToUseItemProps } from './types';
 
+// TODO: remove Icon and description
 const items: Array<HowToUseItemProps> = [
   {
     Icon: WalletA,
-    title: 'Connect Wallet',
+    title: 'Connect wallet',
     description: '',
   },
   {

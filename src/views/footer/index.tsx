@@ -1,6 +1,5 @@
 import { LogoIcon } from 'assets/icons';
-import { Box, Divider, Grid, IconButton, Page, Stack, styled, Text, ButtonBase } from 'components';
-import socials from 'data/social';
+import { Divider, Grid, Stack, Text, AppName } from 'components';
 import React from 'react';
 import Disclaimer from './components/Disclaimer';
 import Policy from './components/Policy';
@@ -8,14 +7,18 @@ import Privacy from './components/Privacy';
 import Term from './components/Term';
 const View: React.FC = () => {
   return (
-    <Stack>
+    <Stack bgcolor="#121212">
       <Divider />
-      <Page spacing={4} sx={{ py: 8 }}>
-        <Stack alignItems="center">
-          <LogoIcon width={120} height={120} />
-        </Stack>
 
-        <Box>
+      <Stack alignItems="center" justifyContent="center" direction="row" spacing={4} p={8}>
+        <LogoIcon width={64} height={64} />
+        <AppName fontSize={24} />
+      </Stack>
+
+      <Divider />
+
+      <Stack alignItems="center" p={8}>
+        <Stack maxWidth="lg" width="100%">
           <Grid container justifyContent="center" spacing={0}>
             <Grid item xs={12} md={3} textAlign="center">
               <Disclaimer />
@@ -30,35 +33,16 @@ const View: React.FC = () => {
               <Policy />
             </Grid>
           </Grid>
-        </Box>
-        <Box display={{ md: 'flex', xs: 'none' }}>
-          <Grid container justifyContent="center" alignItems="center" spacing={2}>
-            {socials.map((item, index) => {
-              const { Icon, href } = item;
-              const IconStyled = styled(Icon)`
-                mix-blend-mode: luminosity;
-                :hover {
-                  mix-blend-mode: normal;
-                }
-              `;
-              return (
-                <Grid item key={index}>
-                  <IconButton sx={{ p: 4 }} href={href} target="_blank">
-                    <IconStyled />
-                  </IconButton>
-                </Grid>
-              );
-            })}
-          </Grid>
-        </Box>
-        <Stack direction="row" spacing={2} justifyContent="center">
-          <Text>Email:</Text>
-          <Text color="primary.main">support@icrosschain.io</Text>
-        </Stack>
-      </Page>
 
-      <Stack sx={{ p: 4, bgcolor: '#464B5F33' }} justifyContent="center" alignItems="center" textAlign="center">
-        <Text>Copyright © 2022, All Right Reserved by iCrosschain</Text>
+          <Stack direction="row" spacing={2} justifyContent="center">
+            <Text>Email:</Text>
+            <Text color="primary.main">support@icrosschain.io</Text>
+          </Stack>
+        </Stack>
+      </Stack>
+
+      <Stack bgcolor="#030303" p={4} justifyContent="center" alignItems="center" textAlign="center">
+        <Text color="rgba(255, 255, 255, 0.47)">Copyright © 2022, All Right Reserved by iCrosschain</Text>
       </Stack>
     </Stack>
   );

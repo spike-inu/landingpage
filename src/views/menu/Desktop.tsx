@@ -23,7 +23,7 @@ const Menu: React.FC = (props) => {
   return (
     <HideOnScroll {...props}>
       <AppBar elevation={1} sx={{ bgcolor: '#00000045' }}>
-        <Toolbar>
+        <Toolbar sx={{ bgcolor: '#121212' }}>
           <Container maxWidth="lg">
             <Box>
               <Wrapper>

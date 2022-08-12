@@ -9,16 +9,16 @@ const Wrapper = styled(ButtonBase)(
      border-radius:10px;
      height:100%;
      width:100%;
-    background-image: linear-gradient(black, ${theme.palette.background.default}), linear-gradient(#5F626C, #5f626c42,#5F626C);
-     border: double 3px transparent;
+    background-image: linear-gradient(black, ${theme.palette.background.default}), linear-gradient(rgb(220 255 192 / 30%), #D4FFB1, #394132);
+    border: double 1px transparent;
     background-origin: border-box;
     background-clip: content-box, border-box;
     //  border-image-slice: 1;
 
     :hover {
         background-image:${theme.palette.background.default};
-        border: 3px solid ${theme.palette.primary.main};
-        .icon,.border-icon {
+        border: 1px solid ${theme.palette.primary.main};
+        .icon {
           stroke: ${theme.palette.primary.main};
           fill: ${theme.palette.primary.main};
           border-color: ${theme.palette.primary.main};
@@ -27,37 +27,27 @@ const Wrapper = styled(ButtonBase)(
     }
     .icon {
         transition:0.2s;
-        stroke: #C4C4C4;
-        fill:#C4C4C4;
-    }
-    .border-icon {
-      border: 3px solid #C4C4C4;
-      border-radius:50%;
-      padding:15px;   
-      transition:1s
+        stroke: ${theme.palette.primary.main};
+        fill: ${theme.palette.primary.main};
     }
     transition:0.5s
   `,
 );
 
-const Desktop: React.FC<FeatureItemProps> = ({ Icon, title, description }) => {
+const Desktop: React.FC<FeatureItemProps> = ({ Icon, title, description, index }) => {
   return (
-    <Grid item lg={4} md={6} sm={12}>
+    <Grid item md={6} sm={12} sx={{ transform: index % 2 === 1 ? 'translateY(30px)' : 'translateY(-30px)' }}>
       <Wrapper>
-        <Stack alignItems="center" textAlign="center" px={10} mt={15} spacing={4} height="100%">
-          <Stack className="border-icon">
-            <Icon className="icon" />
+        <Stack alignItems="flex-start" textAlign="left" px={10} mt={15} spacing={4} height="100%">
+          <Stack width="100%" alignItems="flex-end">
+            <Icon className="icon" color="primary" />
           </Stack>
-          <Subtitle
-            sx={
-              {
-                // minHeight: 70
-              }
-            }
-          >
+          <Text fontSize={22} lineHeight={1.25}>
             {title}
-          </Subtitle>
-          <Text id="title">{description}</Text>
+          </Text>
+          <Text sx={{ opacity: 0.7 }} id="title">
+            {description}
+          </Text>
         </Stack>
       </Wrapper>
     </Grid>
@@ -70,7 +60,7 @@ const Mobile: React.FC<FeatureItemProps> = ({ Icon, title, description }) => {
       <Wrapper>
         <Stack textAlign="center" p={5} spacing={5}>
           <Stack direction="row" alignItems="center" textAlign="left" spacing={4}>
-            <Stack className="border-icon">
+            <Stack>
               <Icon className="icon" width={28} height={28} />
             </Stack>
             <Stack flex={1}>

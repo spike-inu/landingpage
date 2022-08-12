@@ -3,6 +3,7 @@ import Tabs, { tabsClasses } from '@mui/material/Tabs';
 import { Box, Page, Stack, Text, Title } from 'components';
 import chains from 'data/chains';
 import React, { useCallback, useState } from 'react';
+import Background from '../components/Background';
 
 const View: React.FC = () => {
   const [tab, setTab] = useState(0);
@@ -11,54 +12,55 @@ const View: React.FC = () => {
     setTab(newValue);
   }, []);
   return (
-    <Stack>
-      <Page spacing={10}>
-        <Stack textAlign="center" spacing={2} position="relative" alignItems="center">
-          <Title>Our Token</Title>
-        </Stack>
+    <Page spacing={10} px={{ xs: 0, md: 20 }}>
+      <Stack textAlign="center" spacing={2} position="relative" alignItems="center">
+        <Title>Our Token</Title>
+      </Stack>
 
-        <Box>
-          <Tabs
-            value={tab}
-            onChange={handleChange}
-            sx={{
-              borderBottom: '1px solid #464B5F',
-              [`& .${tabsClasses.scrollButtons}`]: {
-                '&.Mui-disabled': { opacity: 0.3 },
-                opacity: 1,
-                color: 'white',
-              },
-            }}
-            variant={'scrollable'}
-            // centered={isDesktop ? true : false}
-            allowScrollButtonsMobile
-          >
-            {chains.map((item, index) => {
-              const active = tab === index;
-              const { Icon, name } = item;
-              return (
-                <Tab
-                  key={index}
-                  icon={<Icon style={{ mixBlendMode: active ? 'normal' : 'luminosity', opacity: active ? 1 : 0.3 }} />}
-                  aria-label={name}
-                  value={index}
-                />
-              );
-            })}
-          </Tabs>
-        </Box>
-        <Box>
-          <Stack textAlign="center" p={5}>
-            <Text variant="h1" fontWeight="bold">
-              COMING
-            </Text>
-            <Text variant="h1" fontWeight="bold" color="primary.main">
-              SOON
-            </Text>
-          </Stack>
-        </Box>
+      <Box>
+        <Tabs
+          value={tab}
+          onChange={handleChange}
+          sx={{
+            mx: -10,
+            borderBottom: '1px solid #464B5F',
+            [`& .${tabsClasses.scrollButtons}`]: {
+              '&.Mui-disabled': { opacity: 0.3 },
+              opacity: 1,
+              color: 'white',
+            },
+          }}
+          variant={'scrollable'}
+          // centered={isDesktop ? true : false}
+          allowScrollButtonsMobile
+        >
+          {chains.map((item, index) => {
+            const active = tab === index;
+            const { Icon, name } = item;
+            return (
+              <Tab
+                key={index}
+                icon={<Icon style={{ mixBlendMode: active ? 'normal' : 'luminosity', opacity: active ? 1 : 0.3 }} />}
+                aria-label={name}
+                value={index}
+              />
+            );
+          })}
+        </Tabs>
+      </Box>
+      <Stack direction="row" justifyContent="center" p={5} spacing={4}>
+        <Text fontSize={20} letterSpacing="0.5em">
+          COMING
+        </Text>
+        <Text fontSize={20} letterSpacing="0.5em" color="primary.main">
+          SOON
+        </Text>
+      </Stack>
+      <Stack height={400}>
+        <Background />
+      </Stack>
 
-        {/* <Box>
+      {/* <Box>
           <Grid container spacing={20} alignItems="center">
             <Grid item md={6} xs={12}>
               <Logo width="100%" />
@@ -102,8 +104,7 @@ const View: React.FC = () => {
             </Grid>
           </Grid>
         </Box> */}
-      </Page>
-    </Stack>
+    </Page>
   );
 };
 

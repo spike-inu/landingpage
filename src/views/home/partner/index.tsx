@@ -1,4 +1,4 @@
-import { Box, Grid, Page, Stack, Title } from 'components';
+import { Box, Grid, Page, Stack, Text, Title } from 'components';
 import partners from 'data/partners';
 import useDetect from 'hooks/useDetect';
 import React from 'react';
@@ -7,27 +7,27 @@ import ItemMobile from './ItemMobile';
 
 const Desktop: React.FC = () => {
   return (
-    <Stack>
-      <Page spacing={10}>
-        <Stack textAlign="center" spacing={2} position="relative">
-          <Title>Partners</Title>
-        </Stack>
+    <Page spacing={10} px={{ xs: 0, md: 20 }}>
+      <Stack textAlign="center" spacing={2} position="relative">
+        <Text sx={{ opacity: 0.47 }}>Our Friends</Text>
+        <Title>On a mission to integrate every chain</Title>
+      </Stack>
 
-        <Box>
-          <Grid container spacing={4} justifyContent="center">
-            {partners.map((item, index) => {
-              return (
-                <Grid item key={index} xs={6} md="auto">
-                  <Item key={index} index={index} {...item} />;
-                </Grid>
-              );
-            })}
-          </Grid>
-        </Box>
-      </Page>
-    </Stack>
+      <Box>
+        <Grid container spacing={4} justifyContent="center">
+          {partners.map((item, index) => {
+            return (
+              <Grid item key={index} xs={6} md="auto">
+                <Item key={index} index={index} {...item} />;
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Box>
+    </Page>
   );
 };
+
 const Mobile: React.FC = () => {
   return (
     <Stack>

@@ -1,35 +1,24 @@
-import { Box, Grid, Page, Stack, Title, useTheme } from 'components';
+import { Box, Grid, Page, Stack, Text, Title } from 'components';
 import socials from 'data/social';
 import React from 'react';
 import Item from './Item';
 
 const View: React.FC = () => {
-  const { palette } = useTheme();
   return (
-    <Stack>
-      <Page spacing={10}>
-        <Stack direction="row" spacing={5} alignItems="center" justifyContent="center">
-          <Box
-            sx={{
-              width: 24,
-              height: 24,
-              bgcolor: 'primary.main',
-              borderRadius: '50%',
-              boxShadow: `0px 0px 34px ${palette.primary.main}`,
-            }}
-          ></Box>
-          <Title>Contact</Title>
-        </Stack>
+    <Page spacing={10} px={{ xs: 0, md: 20 }} direction={{ xs: 'column', md: 'row' }}>
+      <Stack textAlign={{ xs: 'center', md: 'left' }} spacing={2} position="relative" width={{ xs: '100%', md: '25%' }}>
+        <Text sx={{ opacity: 0.47 }}>Our Contact</Text>
+        <Title>Get in touch with us</Title>
+      </Stack>
 
-        <Box>
-          <Grid container spacing={4} justifyContent="center">
-            {socials.map((item, index) => {
-              return <Item key={index} index={index} {...item} />;
-            })}
-          </Grid>
-        </Box>
-      </Page>
-    </Stack>
+      <Box flex="1">
+        <Grid container spacing={4} justifyContent="center">
+          {socials.map((item, index) => (
+            <Item key={index} index={index} {...item} />
+          ))}
+        </Grid>
+      </Box>
+    </Page>
   );
 };
 

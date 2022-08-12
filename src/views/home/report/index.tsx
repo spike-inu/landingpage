@@ -1,29 +1,26 @@
 import { Box } from '@mui/system';
-import { Grid, Page, Stack, Title } from 'components';
+import { Grid, Page, Stack, Text, Title } from 'components';
 import { useDetect } from 'hooks';
 import React from 'react';
-import BackgroundGrid from '../components/BackgroundGrid';
 import data from './data';
 import Item from './Item';
 import ItemMobile from './ItemMobile';
 
 const Desktop: React.FC = () => {
   return (
-    <Stack>
-      <BackgroundGrid width={400} right={0} />
-      <Page spacing={15} alignItems="center">
-        <Stack textAlign="center" spacing={2} position="relative">
-          <Title>Reports</Title>
-        </Stack>
-        <Box>
-          <Grid container spacing={10}>
-            {data.map((item, index) => {
-              return <Item key={index} {...item} index={index} />;
-            })}
-          </Grid>
-        </Box>
-      </Page>
-    </Stack>
+    <Page spacing={10} px={{ xs: 0, md: 20 }}>
+      <Stack textAlign="center" spacing={2} position="relative">
+        <Text sx={{ opacity: 0.47 }}>Our Report</Text>
+        <Title>Report</Title>
+      </Stack>
+      <Box>
+        <Grid container spacing={10}>
+          {data.map((item, index) => {
+            return <Item key={index} {...item} index={index} />;
+          })}
+        </Grid>
+      </Box>
+    </Page>
   );
 };
 

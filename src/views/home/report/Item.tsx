@@ -1,8 +1,8 @@
-import { Box, Grid, Pressable, Stack, styled, Subtitle, Text } from 'components';
+import { Grid, Pressable, Stack, styled, Subtitle, Text } from 'components';
 import React from 'react';
 import { ReportItemProps } from './types';
 
-const Wrapper = styled(Box)(
+const Wrapper = styled(Stack)(
   ({ theme }) => `
     user-select: none;
      border-radius:10px;
@@ -42,11 +42,13 @@ const Wrapper = styled(Box)(
 const View: React.FC<ReportItemProps> = ({ Icon, title, description, index }) => {
   return (
     <Grid item lg={4} md={6} sm={12}>
-      <Wrapper>
-        <Stack p={8} spacing={8} alignItems="flex-start" textAlign="left">
-          <Icon className="icon" />
-          <Subtitle className={`title-${index}`}>{title}</Subtitle>
-          <Text id="title">{description}</Text>
+      <Wrapper height="100%">
+        <Stack p={8} spacing={8} height="100%" justifyContent="space-between">
+          <Stack spacing={8} alignItems="flex-start" textAlign="left">
+            <Icon className="icon" />
+            <Subtitle className={`title-${index}`}>{title}</Subtitle>
+            <Text id="title">{description}</Text>
+          </Stack>
           <Pressable fullWidth>Go to report</Pressable>
         </Stack>
       </Wrapper>

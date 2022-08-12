@@ -14,9 +14,7 @@ const View: React.FC = () => {
   return (
     <>
       <ButtonBase sx={{ p: 4 }} onClick={handleOpen}>
-        <Text variant={isMobile ? 'h5' : 'body2'} color="text.disabled">
-          Privacy And GDPR Policy
-        </Text>
+        <Text variant={isMobile ? 'h5' : 'body2'}>Privacy And GDPR Policy</Text>
       </ButtonBase>
 
       <Dialog fullWidth={true} maxWidth="lg" open={open} onClose={handleClose}>

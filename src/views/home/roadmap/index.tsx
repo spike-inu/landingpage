@@ -1,48 +1,30 @@
-import { Box, Page, Stack, Title } from 'components';
+import { Box, Page, Stack, Text, Title } from 'components';
 import { useDetect } from 'hooks';
 import React from 'react';
-import { Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import Phase from './components/Phase';
 import data from './data.json';
-import ItemMobile from './ItemMobile';
 
 const Desktop: React.FC = () => {
   return (
-    <Stack>
-      <Page spacing={20}>
-        <Stack textAlign="center" spacing={2} position="relative">
-          <Title>Roadmap</Title>
-        </Stack>
+    <Page spacing={10} px={{ xs: 0, md: 20 }}>
+      <Stack textAlign="center" spacing={2} position="relative">
+        <Text sx={{ opacity: 0.47 }}>Our Roadmap</Text>
+        <Title>Roadmap</Title>
+      </Stack>
 
-        <Box>
-          {/* <Divider sx={{ mb: -12.5, display: { md: 'flex', sm: 'none', xs: 'none' } }} /> */}
-          <Stack alignItems="center">
-            <Box maxWidth="lg">
-              <Swiper
-                slidesPerView={2}
-                spaceBetween={0}
-                // loop={true}
-                autoHeight
-                pagination={{
-                  dynamicBullets: true,
-                  clickable: true,
-                }}
-                modules={[Pagination]}
-                style={{ paddingBottom: 80 }}
-              >
-                {data.map((item, index) => {
-                  return (
-                    <SwiperSlide style={{ background: 'transparent', height: '100%' }} key={index}>
-                      <ItemMobile {...item} index={index} />
-                    </SwiperSlide>
-                  );
-                })}
-              </Swiper>
-            </Box>
-          </Stack>
+      <Stack direction="row">
+        <Box width="50%">
+          {data.slice(0, 3).map((item) => (
+            <Phase item={item} key={item.title} />
+          ))}
         </Box>
-      </Page>
-    </Stack>
+        <Box width="50%">
+          {data.slice(3).map((item) => (
+            <Phase item={item} key={item.title} />
+          ))}
+        </Box>
+      </Stack>
+    </Page>
   );
 };
 
@@ -52,31 +34,11 @@ const Mobile: React.FC = () => {
       <Stack textAlign="center" spacing={2} position="relative">
         <Title>Roadmap</Title>
       </Stack>
-      <Box>
-        <Stack alignItems="center">
-          <Box maxWidth="lg">
-            <Swiper
-              slidesPerView={1}
-              spaceBetween={80}
-              autoHeight
-              pagination={{
-                dynamicBullets: true,
-                clickable: true,
-              }}
-              modules={[Pagination]}
-              style={{ paddingBottom: 80 }}
-            >
-              {data.map((item, index) => {
-                return (
-                  <SwiperSlide style={{ background: 'transparent' }} key={index}>
-                    <ItemMobile {...item} index={index} />
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </Box>
-        </Stack>
-      </Box>
+      <Stack>
+        {data.map((item) => (
+          <Phase item={item} key={item.title} />
+        ))}
+      </Stack>
     </Stack>
   );
 };

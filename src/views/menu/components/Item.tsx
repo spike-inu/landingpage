@@ -1,6 +1,6 @@
 import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
 import { Stack, Text, ButtonBase, styled, Box, Menu, MenuItem } from 'components';
-import React, { FC, useCallback, useMemo, useState } from 'react';
+import React, { FC, useCallback, useMemo } from 'react';
 import { ItemProps } from '../types';
 
 const Line = styled(Stack)(
@@ -12,7 +12,7 @@ const Line = styled(Stack)(
 `,
 );
 
-const View: FC<ItemProps> = ({ href, title, index, subs }) => {
+const View: FC<ItemProps> = ({ title, index, subs }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleClick = useCallback(

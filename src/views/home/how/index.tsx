@@ -1,4 +1,4 @@
-import { AppName, Box, Grid, Image, Page, Stack, Subtitle, Text, Title } from 'components';
+import { AppName, Box, Grid, Image, Page, Stack, Text, Title } from 'components';
 import { useDetect } from 'hooks';
 import React from 'react';
 import BackgroundGrid from '../components/BackgroundGrid';
@@ -8,32 +8,34 @@ import Item from './Item';
 
 const Desktop: React.FC = () => {
   return (
-    <Stack>
-      <Page spacing={10}>
-        <Stack spacing={2} position="relative">
-          <Title sx={{ display: 'flex' }}>
-            How to use <AppName variant="h4" />
-          </Title>
-        </Stack>
+    <Page spacing={10} px={{ xs: 0, md: 20 }}>
+      <Stack spacing={2} position="relative">
+        <Text sx={{ opacity: 0.47 }}>How to use</Text>
+        <Title sx={{ display: 'flex' }}>
+          How to use <AppName variant="h4" fontWeight={600} />
+        </Title>
+      </Stack>
 
-        <Box>
-          <Grid container spacing={20}>
-            <Grid item md={6} xs={12} mt={20}>
-              <Stack spacing={5}>
+      <Box>
+        <Grid container spacing={20}>
+          <Grid item md={5} xs={12} mt={20}>
+            <Box position="relative">
+              <Box position="absolute" top={0} left={25} bottom={0} my={5} border="1px dashed #2C3F1B" />
+              <Stack position="relative" spacing={5}>
                 {data.map((item, index) => {
                   return <Item key={index} {...item} index={index} />;
                 })}
               </Stack>
-            </Grid>
-            <Grid item md={6} xs={12} position="relative">
-              {/* <BackgroundGrid height={280} width={335} sx={{ transform: 'translateY(-20%)' }} />
-              <BackgroundGrid height={280} width={335} right={0} sx={{ transform: 'translateX(20%)' }} /> */}
-              <Image src="/images/ic-how-to-use.png" width="100%" sx={{ zIndex: 1 }} />
-            </Grid>
+            </Box>
           </Grid>
-        </Box>
-      </Page>
-    </Stack>
+          <Grid item md={6} xs={12} mt={10} position="relative">
+            <BackgroundGrid width="100%" position="absolute" sx={{ transform: 'translate(-5%,-40%)' }} />
+            <BackgroundGrid width="100%" position="absolute" sx={{ transform: 'translate(40%,-5%)' }} />
+            <Image src="/images/ic-how-to-use.png" width="100%" sx={{ zIndex: 1 }} />
+          </Grid>
+        </Grid>
+      </Box>
+    </Page>
   );
 };
 
