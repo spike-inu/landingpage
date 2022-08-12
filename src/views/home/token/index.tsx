@@ -2,10 +2,12 @@ import Tab from '@mui/material/Tab';
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
 import { Box, Page, Stack, Text, Title } from 'components';
 import chains from 'data/chains';
+import { useDetect } from 'hooks';
 import React, { useCallback, useState } from 'react';
 import Background from '../components/Background';
 
 const View: React.FC = () => {
+  const { isMobile } = useDetect();
   const [tab, setTab] = useState(0);
 
   const handleChange = useCallback((event: React.SyntheticEvent, newValue: number) => {
@@ -22,7 +24,7 @@ const View: React.FC = () => {
           value={tab}
           onChange={handleChange}
           sx={{
-            mx: -10,
+            mx: isMobile ? undefined : -10,
             borderBottom: '1px solid #464B5F',
             [`& .${tabsClasses.scrollButtons}`]: {
               '&.Mui-disabled': { opacity: 0.3 },

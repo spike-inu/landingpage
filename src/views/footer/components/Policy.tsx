@@ -1,5 +1,4 @@
 import { ButtonBase, Text, Dialog, DialogTitle, DialogContent, Stack, Button, DialogActions, Box } from 'components';
-import { useDetect } from 'hooks';
 import React from 'react';
 const View: React.FC = () => {
   const [open, setOpen] = React.useState(false);
@@ -10,11 +9,10 @@ const View: React.FC = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  const { isMobile } = useDetect();
   return (
     <>
-      <ButtonBase sx={{ p: 4 }} onClick={handleOpen}>
-        <Text variant={isMobile ? 'h5' : 'body2'}>Cookies Policy</Text>
+      <ButtonBase onClick={handleOpen}>
+        <Text variant="body2">Cookies Policy</Text>
       </ButtonBase>
 
       <Dialog fullWidth={true} maxWidth="lg" open={open} onClose={handleClose}>

@@ -36,7 +36,6 @@ const AppNameStyled = styled(AppName)(
 );
 
 const Desktop: React.FC = () => {
-  const { palette } = useTheme();
   const { subtitle, description } = data;
   return (
     <Wrapper>
@@ -57,7 +56,6 @@ const Desktop: React.FC = () => {
                             height: 14,
                             bgcolor: 'primary.main',
                             borderRadius: '50%',
-                            boxShadow: `0px 0px 34px ${palette.primary.main}`,
                           }}
                         />
                       )}
@@ -91,15 +89,29 @@ const Mobile: React.FC = () => {
       </>
       <Stack>
         <Stack sx={{ mt: '10vh', px: 5 }}>
-          <AppNameStyled fontSize={16} />
-          <Stack mt={4} spacing={5} alignItems="flex-start">
-            <Text fontWeight="bold" variant="h6">
-              {subtitle}
-            </Text>
-            <Text>{description}</Text>
-          </Stack>
-          <Stack mt={8}>
-            <LaunchApp />
+          <AppNameStyled fontSize={18} fontWeight={600} />
+          <Stack mt={4} spacing={8} alignItems="flex-start">
+            <Stack direction="row" alignItems="center" spacing={4}>
+              {subtitle.split(' - ').map((text, index) => (
+                <Fragment key={index}>
+                  {!!index && (
+                    <Box
+                      sx={{
+                        width: 14,
+                        height: 14,
+                        bgcolor: 'primary.main',
+                        borderRadius: '50%',
+                      }}
+                    />
+                  )}
+                  <Text fontSize={40} fontWeight="bold" letterSpacing="-0.01em">
+                    {text}
+                  </Text>
+                </Fragment>
+              ))}
+            </Stack>
+            <Text sx={{ opacity: 0.7 }}>{description}</Text>
+            <LaunchApp variant="contained" size="large" fullWidth />
           </Stack>
         </Stack>
         <Stack mt={8}>

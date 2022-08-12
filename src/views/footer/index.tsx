@@ -19,7 +19,7 @@ const View: React.FC = () => {
 
       <Stack alignItems="center" p={8}>
         <Stack maxWidth="lg" width="100%">
-          <Grid container justifyContent="center" spacing={0}>
+          <Grid container justifyContent="center" spacing={2}>
             <Grid item xs={12} md={3} textAlign="center">
               <Disclaimer />
             </Grid>
@@ -34,7 +34,7 @@ const View: React.FC = () => {
             </Grid>
           </Grid>
 
-          <Stack direction="row" spacing={2} justifyContent="center">
+          <Stack direction="row" spacing={2} justifyContent="center" pt={{ xs: 2, md: 4 }}>
             <Text>Email:</Text>
             <Text color="primary.main">support@icrosschain.io</Text>
           </Stack>

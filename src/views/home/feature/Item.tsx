@@ -1,4 +1,4 @@
-import { Grid, Stack, styled, Subtitle, Text, ButtonBase } from 'components';
+import { Grid, Stack, styled, Text, ButtonBase } from 'components';
 import { useDetect } from 'hooks';
 import React from 'react';
 import { FeatureItemProps } from './types';
@@ -56,19 +56,16 @@ const Desktop: React.FC<FeatureItemProps> = ({ Icon, title, description, index }
 
 const Mobile: React.FC<FeatureItemProps> = ({ Icon, title, description }) => {
   return (
-    <Grid item xs={12} sm={12}>
+    <Grid item md={6} sm={12}>
       <Wrapper>
-        <Stack textAlign="center" p={5} spacing={5}>
-          <Stack direction="row" alignItems="center" textAlign="left" spacing={4}>
-            <Stack>
-              <Icon className="icon" width={28} height={28} />
-            </Stack>
-            <Stack flex={1}>
-              <Subtitle sx={{ fontWeight: 'bold' }}>{title}</Subtitle>
-            </Stack>
+        <Stack alignItems="flex-start" textAlign="left" px={10} mt={15} spacing={4} height="100%">
+          <Stack width="100%" alignItems="flex-end">
+            <Icon className="icon" color="primary" />
           </Stack>
-
-          <Text id="title" textAlign="left">
+          <Text fontSize={22} lineHeight={1.25}>
+            {title}
+          </Text>
+          <Text sx={{ opacity: 0.7 }} id="title">
             {description}
           </Text>
         </Stack>

@@ -53,13 +53,11 @@ const Desktop: React.FC = () => {
       <Box p={5} bgcolor="rgba(70, 75, 95, 0.2)" borderRadius={2} minHeight={80}>
         <Grid container spacing={5}>
           {chains[tab].swaps &&
-            chains[tab].swaps.map((item, index) => {
-              return (
-                <Grid item key={index}>
-                  <Item {...item} index={index} />
-                </Grid>
-              );
-            })}
+            chains[tab].swaps.map((item, index) => (
+              <Grid item key={index}>
+                <Item {...item} index={index} />
+              </Grid>
+            ))}
         </Grid>
       </Box>
     </Page>

@@ -6,23 +6,31 @@ import data from './data.json';
 
 const Desktop: React.FC = () => {
   return (
-    <Page spacing={10} px={{ xs: 0, md: 20 }}>
-      <Stack textAlign="center" spacing={2} position="relative">
-        <Text sx={{ opacity: 0.47 }}>Our Roadmap</Text>
-        <Title>Roadmap</Title>
-      </Stack>
+    <Page px={{ xs: 0, md: 20 }}>
+      <Stack
+        spacing={10}
+        px={4}
+        py={10}
+        borderRadius={5}
+        sx={{ background: 'linear-gradient(180deg, #121212 0%, #121212 50.13%, rgba(18, 18, 18, 0) 81.59%)' }}
+      >
+        <Stack textAlign="center" spacing={2} position="relative">
+          <Text sx={{ opacity: 0.47 }}>Our Roadmap</Text>
+          <Title>Roadmap</Title>
+        </Stack>
 
-      <Stack direction="row">
-        <Box width="50%">
-          {data.slice(0, 3).map((item) => (
-            <Phase item={item} key={item.title} />
-          ))}
-        </Box>
-        <Box width="50%">
-          {data.slice(3).map((item) => (
-            <Phase item={item} key={item.title} />
-          ))}
-        </Box>
+        <Stack direction="row">
+          <Box width="50%">
+            {data.slice(0, 3).map((item) => (
+              <Phase item={item} key={item.title} />
+            ))}
+          </Box>
+          <Box width="50%">
+            {data.slice(3).map((item) => (
+              <Phase item={item} key={item.title} />
+            ))}
+          </Box>
+        </Stack>
       </Stack>
     </Page>
   );

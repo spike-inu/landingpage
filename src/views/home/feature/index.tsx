@@ -11,10 +11,10 @@ const View: React.FC = () => {
         <Title>What Services We Offer</Title>
       </Stack>
       <Box pt={4}>
-        <Grid container spacing={10} py={{ md: 12 }}>
-          {data.map((item, index) => {
-            return <Item key={index} index={index} {...item} />;
-          })}
+        <Grid container spacing={{ xs: 6, md: 10 }} py={{ md: 12 }}>
+          {data.map((item, index) => (
+            <Item key={index} index={index} {...item} />
+          ))}
         </Grid>
       </Box>
     </Page>

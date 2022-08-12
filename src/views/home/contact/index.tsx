@@ -12,7 +12,7 @@ const View: React.FC = () => {
       </Stack>
 
       <Box flex="1">
-        <Grid container spacing={4} justifyContent="center">
+        <Grid container spacing={4} justifyContent="flex-start">
           {socials.map((item, index) => (
             <Item key={index} index={index} {...item} />
           ))}
