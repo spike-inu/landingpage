@@ -1,6 +1,5 @@
 import {
   APESwapIcon,
-  AuroraIcon,
   OKExChainIcon,
   ArbirtumIcon,
   AvalancheIcon,

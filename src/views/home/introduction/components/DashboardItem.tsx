@@ -1,4 +1,4 @@
-import { Stack, Text, Title, styled } from 'components';
+import { Stack, Text, styled } from 'components';
 import React from 'react';
 import { DashboardProps } from '../types';
 

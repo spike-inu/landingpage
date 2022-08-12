@@ -10,6 +10,7 @@ const Icon = (props: IconProps) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      {...props}
     >
       <rect width="44" height="44" fill="url(#patternTradeJoe)" />
       <defs>

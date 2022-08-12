@@ -1,4 +1,4 @@
-import { Box, Grid, Pressable, Stack, styled, Subtitle, Text } from 'components';
+import { Box, Pressable, Stack, styled, Subtitle, Text } from 'components';
 import React from 'react';
 import { ReportItemProps } from './types';
 

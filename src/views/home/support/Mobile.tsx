@@ -1,6 +1,6 @@
 import Tab from '@mui/material/Tab';
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
-import { Box, ButtonBase, Grid, Stack, Subtitle, Text, Title, useTheme } from 'components';
+import { Box, Stack, Subtitle, Title, useTheme } from 'components';
 import chains from 'data/chains';
 import { useDetect } from 'hooks';
 import React, { useCallback, useState } from 'react';
