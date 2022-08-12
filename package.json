@@ -22,13 +22,12 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "next": "^12.0.4",
-    "node-sass": "6.0.1",
+    "node-sass": "^7.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-number-format": "4.8.0",
     "react-scripts": "4.0.3",
     "sass": "^1.54.4",
-    "swiper": "^7.3.1",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
@@ -49,7 +48,7 @@
     "format:write": "npx prettier --write '**/*.{js,jsx,ts,tsx}'",
     "clean": "rm -rf .next node_modules package-*.json yarn-*.json *.lock && yarn",
     "cypress:open": "cypress open",
-    "release": "standard-version -a",
+    "release": "standard-version -a"
   },
   "eslintConfig": {
     "extends": [
