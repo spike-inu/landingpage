@@ -1,8 +1,10 @@
+import { IconProps } from 'assets/icons/types';
 import React from 'react';
 
 export interface TokenProps {
   name: string;
   Icon: React.FC | string;
+  props?: IconProps;
   index?: number;
 }
 

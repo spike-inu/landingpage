@@ -36,6 +36,7 @@ import {
   CronosIcon,
   RaydiumIcon,
   OptimismIcon,
+  CherrySwapIcon,
 } from 'assets/icons';
 import { ChainProps } from './types';
 
@@ -205,8 +206,9 @@ const items: Array<ChainProps> = [
     Icon: OKExChainIcon,
     swaps: [
       {
-        Icon: 'https://s2.coinmarketcap.com/static/img/coins/64x64/6596.png',
+        Icon: CherrySwapIcon,
         name: 'CherrySwap',
+        props: { style: { background: '#ffccd3', borderRadius: '50%', width: 30, height: 30, padding: 7 } },
       },
       {
         Icon: 'https://s2.coinmarketcap.com/static/img/coins/64x64/11146.png',
