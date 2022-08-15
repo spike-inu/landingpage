@@ -1,4 +1,4 @@
-import { AppName, Grid, LaunchApp, Stack, Text, styled, Box, useTheme, Page } from 'components';
+import { AppName, Grid, LaunchApp, Stack, Text, styled, Box, Page } from 'components';
 import { useDetect } from 'hooks';
 import React, { Fragment } from 'react';
 import BackgroundGrid from '../components/BackgroundGrid';

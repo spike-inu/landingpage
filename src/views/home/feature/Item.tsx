@@ -34,7 +34,8 @@ const Wrapper = styled(ButtonBase)(
   `,
 );
 
-const Desktop: React.FC<FeatureItemProps> = ({ Icon, title, description, index }) => {
+const Desktop: React.FC<FeatureItemProps> = ({ Icon, title, description, highlight, index }) => {
+  console.log(title.split(highlight));
   return (
     <Grid item md={6} sm={12} sx={{ transform: index % 2 === 1 ? 'translateY(30px)' : 'translateY(-30px)' }}>
       <Wrapper>
@@ -42,9 +43,33 @@ const Desktop: React.FC<FeatureItemProps> = ({ Icon, title, description, index }
           <Stack width="100%" alignItems="flex-end">
             <Icon className="icon" color="primary" />
           </Stack>
-          <Text fontSize={22} lineHeight={1.25}>
+          {highlight ? (
+            <Stack>
+              {title.split('\n').map((text) => (
+                <Stack direction="row">
+                  {text.split(highlight).map((each, index) => (
+                    <>
+                      {!!index && (
+                        <Text fontSize={22} lineHeight={1.25} color="primary.main">
+                          {highlight}
+                        </Text>
+                      )}
+                      <Text fontSize={22} lineHeight={1.25}>
+                        {each}
+                      </Text>
+                    </>
+                  ))}
+                </Stack>
+              ))}
+            </Stack>
+          ) : (
+            <Text fontSize={22} lineHeight={1.25}>
+              {title}
+            </Text>
+          )}
+          {/* <Text fontSize={22} lineHeight={1.25}>
             {title}
-          </Text>
+          </Text> */}
           <Text sx={{ opacity: 0.7 }} id="title">
             {description}
           </Text>

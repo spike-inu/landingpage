@@ -33,11 +33,6 @@ const View: React.FC = () => {
               <Policy />
             </Grid>
           </Grid>
-
-          <Stack direction="row" spacing={2} justifyContent="center" pt={{ xs: 2, md: 4 }}>
-            <Text>Email:</Text>
-            <Text color="primary.main">support@icrosschain.io</Text>
-          </Stack>
         </Stack>
       </Stack>
 

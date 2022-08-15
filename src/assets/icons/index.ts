@@ -46,3 +46,5 @@ export { default as OKExChainIcon } from './OKExChain';
 export { default as ArbirtumIcon } from './Arbirtum';
 export { default as InstagramIcon } from './Instagram';
 export { default as MessariIcon } from './Messari';
+export { default as CronosIcon } from './Cronos';
+export { default as OptimismIcon } from './Optimism';

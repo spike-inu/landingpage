@@ -6,4 +6,5 @@ export interface FeatureItemProps {
   title: string;
   description: string;
   index?: number;
+  highlight?: string;
 }

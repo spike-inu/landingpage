@@ -38,16 +38,25 @@ const Desktop: React.FC = () => {
 
 const Mobile: React.FC = () => {
   return (
-    <Stack px={5}>
-      <Stack textAlign="center" spacing={2} position="relative">
-        <Title>Roadmap</Title>
+    <Page px={{ xs: 0, md: 20 }}>
+      <Stack
+        spacing={10}
+        px={4}
+        py={10}
+        borderRadius={5}
+        sx={{ background: 'linear-gradient(180deg, #121212 0%, #121212 50.13%, rgba(18, 18, 18, 0) 81.59%)' }}
+      >
+        <Stack textAlign="center" spacing={2} position="relative">
+          <Text sx={{ opacity: 0.47 }}>Our Roadmap</Text>
+          <Title>Roadmap</Title>
+        </Stack>
+        <Stack>
+          {data.map((item) => (
+            <Phase item={item} key={item.title} />
+          ))}
+        </Stack>
       </Stack>
-      <Stack>
-        {data.map((item) => (
-          <Phase item={item} key={item.title} />
-        ))}
-      </Stack>
-    </Stack>
+    </Page>
   );
 };
 

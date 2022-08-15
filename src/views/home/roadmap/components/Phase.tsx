@@ -56,10 +56,10 @@ const PhaseContent = ({
         <Stack position="relative" height={20} justifyContent="center">
           <Stack
             height={12}
-            minWidth={12}
+            width={12}
             bgcolor={inactive ? '#1B300A' : 'primary.main'}
             zIndex={1}
-            sx={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
+            sx={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)', minWidth: 12 }}
           />
           <Box
             border={inactive ? '2px solid #1B300A' : '2px solid #2C3F1B'}

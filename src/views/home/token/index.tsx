@@ -16,6 +16,7 @@ const View: React.FC = () => {
   return (
     <Page spacing={10} px={{ xs: 0, md: 20 }}>
       <Stack textAlign="center" spacing={2} position="relative" alignItems="center">
+        <Text sx={{ opacity: 0.47 }}>Our Support</Text>
         <Title>Our Token</Title>
       </Stack>
 

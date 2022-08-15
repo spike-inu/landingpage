@@ -26,8 +26,9 @@ const Desktop: React.FC = () => {
 
 const Mobile: React.FC = () => {
   return (
-    <Stack px={4} spacing={10}>
+    <Page spacing={10} px={{ xs: 0, md: 20 }}>
       <Stack textAlign="center" spacing={2} position="relative">
+        <Text sx={{ opacity: 0.47 }}>Our Report</Text>
         <Title>Report</Title>
       </Stack>
       <Box>
@@ -37,7 +38,7 @@ const Mobile: React.FC = () => {
           })}
         </Stack>
       </Box>
-    </Stack>
+    </Page>
   );
 };
 
