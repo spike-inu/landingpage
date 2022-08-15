@@ -15,9 +15,9 @@ const Desktop: React.FC = () => {
       </Stack>
       <Box>
         <Grid container spacing={10}>
-          {data.map((item, index) => {
-            return <Item key={index} {...item} index={index} />;
-          })}
+          {data.map((item, index) => (
+            <Item key={index} {...item} index={index} />
+          ))}
         </Grid>
       </Box>
     </Page>
@@ -33,9 +33,9 @@ const Mobile: React.FC = () => {
       </Stack>
       <Box>
         <Stack spacing={5}>
-          {data.map((item, index) => {
-            return <ItemMobile key={index} {...item} index={index} />;
-          })}
+          {data.map((item, index) => (
+            <ItemMobile key={index} {...item} index={index} />
+          ))}
         </Stack>
       </Box>
     </Page>

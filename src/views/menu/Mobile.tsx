@@ -2,7 +2,6 @@ import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import { CloseIcon, LogoIcon, MenuIcon } from 'assets/icons';
 import {
   AppBar,
-  AppName,
   Audit,
   Collapse,
   IconButton,
@@ -26,19 +25,13 @@ const Wrapper = styled((props: StackProps) => {
       direction="row"
       alignItems="center"
       justifyContent="space-between"
-      sx={{ width: '100%', py: 4 }}
+      sx={{ width: '100%', py: 2 }}
       {...props}
     />
   );
 })({
   position: 'relative',
 });
-
-const AppNameStyled = styled(AppName)`
-  ::first-letter {
-    color: white;
-  }
-`;
 
 const Drawer = styled(SwipeableDrawer)(() => ({
   opacity: 1,
@@ -52,7 +45,7 @@ const DrawerWrapper = styled((props: StackProps) => {
     <Stack
       flex={1}
       sx={{
-        bgcolor: '#02071B',
+        bgcolor: 'background.paper',
         p: 4,
         position: 'relative',
         zIndex: 2,
@@ -73,7 +66,6 @@ const MobileMenu: React.FC = (props) => {
 
   const [expanded, setExpanded] = useState(new Set());
   const handleClickSubMenu = (item: string) => {
-    console.log({ item });
     const newExpanded = new Set(expanded);
     if (newExpanded.has(item)) {
       newExpanded.delete(item);
@@ -82,20 +74,15 @@ const MobileMenu: React.FC = (props) => {
     }
     setExpanded(newExpanded);
   };
-  // const [openSubMenu, setOpenSubMenu] = React.useState(true);
-  // const handleOpenSubMenu = () => {
-  //   setOpenSubMenu(!openSubMenu);
-  // };
 
   return (
     <>
       <HideOnScroll>
         <AppBar position="fixed" elevation={2}>
-          <Toolbar sx={{ bgcolor: '#111529b2' }}>
+          <Toolbar>
             <Wrapper>
-              <Stack direction="row" alignItems="center" spacing={2}>
-                <LogoIcon width={30} height={32} />
-                <AppNameStyled fontSize={16} />
+              <Stack direction="row" alignItems="center" px={4}>
+                <LogoIcon height={32} />
               </Stack>
               <Stack direction="row" spacing={2}>
                 <LaunchApp />

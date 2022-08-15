@@ -16,13 +16,12 @@ const Pressable: FC<PressableProps> = (props) => {
       sx={{
         fontWeight: 'bold',
         textTransform: 'none',
-        borderRadius: 2,
-        borderWidth: 2,
+        borderRadius: 1,
+        borderWidth: 1,
         ':hover': {
           boxShadow: `0px 0px 12px ${palette.primary.main}`,
           bgcolor: palette.primary.main,
           color: 'black',
-          borderWidth: 2,
         },
         transition: '0.4s',
         ...sx,

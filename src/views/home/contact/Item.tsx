@@ -19,10 +19,12 @@ const Wrapper = styled((props: StackProps) => {
   );
 })`
   mix-blend-mode: luminosity;
-  opacity: 0.7;
+  opacity: 0.5;
+  color: #fff;
   :hover {
     mix-blend-mode: normal;
     opacity: 1;
+    color: #f6f6f6;
   }
   transition: 0.5s;
 `;

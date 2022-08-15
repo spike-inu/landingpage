@@ -13,7 +13,7 @@ const Wrapper = styled((props: StackProps) => {
       alignItems="center"
       flex={1}
       spacing={12}
-      sx={{ py: 4 }}
+      sx={{ py: 2.5 }}
       {...props}
     />
   );
@@ -30,9 +30,9 @@ const Menu: React.FC = (props) => {
                 <Stack direction="row" spacing={10}>
                   <Logo />
                   <Stack direction="row" spacing={4} alignItems="baseline">
-                    {data.items.map((item, index) => {
-                      return <Item key={index} {...item} index={index} />;
-                    })}
+                    {data.items.map((item, index) => (
+                      <Item key={index} {...item} />
+                    ))}
                   </Stack>
                 </Stack>
                 <Stack direction="row" spacing={2}>

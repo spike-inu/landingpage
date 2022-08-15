@@ -1,18 +1,9 @@
 import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
-import { Stack, Text, ButtonBase, styled, Box, Menu, MenuItem } from 'components';
+import { Stack, Text, ButtonBase, Box, Menu, MenuItem } from 'components';
 import React, { FC, useCallback, useMemo } from 'react';
 import { ItemProps } from '../types';
 
-const Line = styled(Stack)(
-  ({ theme }) => `
-    background: ${theme.palette.primary.main};
-    box-shadow: 0px 0px 8px ${theme.palette.primary.main};
-    border-radius: 10px;
-    height:2px;
-`,
-);
-
-const View: FC<ItemProps> = ({ title, index, subs }) => {
+const View: FC<ItemProps> = ({ title, subs }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleClick = useCallback(
@@ -32,12 +23,7 @@ const View: FC<ItemProps> = ({ title, index, subs }) => {
   const open = useMemo(() => {
     return Boolean(anchorEl);
   }, [anchorEl]);
-  const active = useMemo(() => {
-    if (index === 0) {
-      return true;
-    }
-    return false;
-  }, [index]);
+
   return (
     <Box position="relative">
       <ButtonBase
@@ -46,16 +32,20 @@ const View: FC<ItemProps> = ({ title, index, subs }) => {
         arial-controls={open ? 'sub-menu' : undefined}
         aria-expanded={open ? 'true' : undefined}
         aria-haspopup="true"
+        sx={{
+          color: open ? 'primary.main' : 'text.disabled',
+          ':hover': {
+            color: 'primary.main',
+          },
+        }}
       >
         <Stack px={4} py={2} spacing={1} alignItems="center">
           <Stack direction="row" alignItems="center">
-            <Text color={active ? 'text.primary' : 'text.disabled'} fontWeight="bold">
+            <Text color="inherit" fontWeight="bold">
               {title}
             </Text>
-            {subs.length > 0 ? open ? <ArrowDropUp color="disabled" /> : <ArrowDropDown color="disabled" /> : null}
+            {subs.length > 0 ? open ? <ArrowDropUp color="inherit" /> : <ArrowDropDown color="inherit" /> : null}
           </Stack>
-
-          <Line sx={{ opacity: active ? 1 : 0, width: '100%' }} />
         </Stack>
       </ButtonBase>
 
@@ -69,16 +59,14 @@ const View: FC<ItemProps> = ({ title, index, subs }) => {
         }}
         PaperProps={{ elevation: 2 }}
       >
-        <Stack spacing={2} sx={{ bgcolor: 'background.paper', p: 4, borderRadius: 1 }}>
-          {subs.map((sub, i) => {
-            return (
-              <MenuItem key={i} onClick={handleClose}>
-                <Text color={active ? 'text.primary' : 'text.disabled'} fontWeight="bold">
-                  {sub.title}
-                </Text>
-              </MenuItem>
-            );
-          })}
+        <Stack spacing={2} border="1px solid #434540" borderRadius={1} p={2} bgcolor="background.paper">
+          {subs.map((sub, i) => (
+            <MenuItem key={i} onClick={handleClose} sx={{ py: 2, px: 6, mt: '0 !important', borderRadius: 1 }}>
+              <Text color="text.primary" fontWeight="bold">
+                {sub.title}
+              </Text>
+            </MenuItem>
+          ))}
         </Stack>
       </Menu>
     </Box>

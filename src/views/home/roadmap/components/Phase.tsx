@@ -5,7 +5,7 @@ import { ActiveDot, InactiveDot } from './PhaseDot';
 
 const PhaseNode: FC<{ inactive?: boolean }> = ({ children, inactive }) => {
   return (
-    <Box px={5}>
+    <Box px={5} sx={{ filter: 'drop-shadow(0px 4px 20px rgba(135, 228, 46, 0.5))' }}>
       <Stack
         bgcolor={inactive ? '#91FE39' : 'primary.main'}
         color={inactive ? 'text.primary' : undefined}
@@ -15,7 +15,9 @@ const PhaseNode: FC<{ inactive?: boolean }> = ({ children, inactive }) => {
         justifyContent="center"
         fontSize={16}
         fontWeight={600}
-        sx={{ clipPath: 'polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%)' }}
+        sx={{
+          clipPath: 'polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%)',
+        }}
         position="relative"
       >
         <Stack

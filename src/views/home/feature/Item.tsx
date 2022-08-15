@@ -6,9 +6,9 @@ import { FeatureItemProps } from './types';
 const Wrapper = styled(ButtonBase)(
   ({ theme }) => `
     user-select: none;
-     border-radius:10px;
-     height:100%;
-     width:100%;
+    border-radius:10px;
+    height:100%;
+    width:100%;
     background-image: linear-gradient(black, ${theme.palette.background.default}), linear-gradient(rgb(220 255 192 / 30%), #D4FFB1, #394132);
     border: double 1px transparent;
     background-origin: border-box;
@@ -49,11 +49,11 @@ const Desktop: React.FC<FeatureItemProps> = ({ Icon, title, description, highlig
                   {text.split(highlight).map((each, index) => (
                     <Fragment key={each}>
                       {!!index && (
-                        <Text fontSize={22} lineHeight={1.25} color="primary.main">
+                        <Text fontSize={22} fontWeight={600} lineHeight={1.25} color="primary.main">
                           {highlight}
                         </Text>
                       )}
-                      <Text fontSize={22} lineHeight={1.25}>
+                      <Text fontSize={22} fontWeight={600} lineHeight={1.25}>
                         {each}
                       </Text>
                     </Fragment>
@@ -62,7 +62,7 @@ const Desktop: React.FC<FeatureItemProps> = ({ Icon, title, description, highlig
               ))}
             </Stack>
           ) : (
-            <Text fontSize={22} lineHeight={1.25}>
+            <Text fontSize={22} fontWeight={600} lineHeight={1.25}>
               {title}
             </Text>
           )}
@@ -90,11 +90,11 @@ const Mobile: React.FC<FeatureItemProps> = ({ Icon, title, description, highligh
                   {text.split(highlight).map((each, index) => (
                     <Fragment key={each}>
                       {!!index && (
-                        <Text fontSize={22} lineHeight={1.25} color="primary.main">
+                        <Text fontSize={22} fontWeight={600} lineHeight={1.25} color="primary.main">
                           {highlight}
                         </Text>
                       )}
-                      <Text fontSize={22} lineHeight={1.25}>
+                      <Text fontSize={22} fontWeight={600} lineHeight={1.25}>
                         {each}
                       </Text>
                     </Fragment>
@@ -103,7 +103,7 @@ const Mobile: React.FC<FeatureItemProps> = ({ Icon, title, description, highligh
               ))}
             </Stack>
           ) : (
-            <Text fontSize={22} lineHeight={1.25}>
+            <Text fontSize={22} fontWeight={600} lineHeight={1.25}>
               {title}
             </Text>
           )}
