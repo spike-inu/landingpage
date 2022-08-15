@@ -1,7 +1,10 @@
 import { Box, Stack, Text } from 'components';
-import { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { ItemContentProps, ItemProps } from '../types';
 import { ActiveDot, InactiveDot } from './PhaseDot';
+
+const MIN_SPACE_SAME_SIDE = 32;
+const MIN_SPACE_OPPOSITE_SIDE = 32;
 
 interface PhaseNodeProps {
   width?: number;
@@ -44,19 +47,51 @@ const PhaseNode: FC<PhaseNodeProps & { inactive?: boolean }> = ({ children, inac
   );
 };
 
-const PhaseContent = ({
-  data,
-  side = 'left',
-  inactive,
-  index,
-}: {
+interface NodeData {
+  position: number;
+  height: number;
+}
+
+interface PhaseContentProps {
   data: ItemContentProps;
   side: 'left' | 'right';
   inactive?: boolean;
   index?: number;
-}) => {
+  nodes: NodeData[];
+  setNodes: React.Dispatch<React.SetStateAction<NodeData[]>>;
+  y?: number;
+  x?: number;
+}
+
+const PhaseContent = ({ data, side = 'left', inactive, index, nodes, setNodes, x, y }: PhaseContentProps) => {
   return (
-    <Stack>
+    <Stack
+      ref={(ref: HTMLDivElement | null) => {
+        if (!ref) return;
+        if (nodes[index].height) return;
+        const newNodes = [...nodes];
+        if (index === 0) {
+          newNodes[0] = {
+            position: 0,
+            height: ref.clientHeight,
+          };
+          setNodes(newNodes);
+        } else if (index === 1) {
+          newNodes[1] = {
+            position: MIN_SPACE_OPPOSITE_SIDE,
+            height: ref.clientHeight,
+          };
+          setNodes(newNodes);
+        } else if (newNodes[index - 2].height) {
+          newNodes[index] = {
+            position: newNodes[index - 2].position + newNodes[index - 2].height + MIN_SPACE_SAME_SIDE,
+            height: ref.clientHeight,
+          };
+          setNodes(newNodes);
+        }
+      }}
+      sx={{ marginTop: y ? y / 4 : undefined }}
+    >
       <Stack direction={side === 'left' ? 'row' : 'row-reverse'} justifyContent="flex-end" spacing={2}>
         <Text
           fontWeight={600}
@@ -75,7 +110,7 @@ const PhaseContent = ({
           />
           <Box
             border={inactive ? '1px solid #1B300A' : '1px solid #2C3F1B'}
-            width={80}
+            width={x}
             position="absolute"
             top="50%"
             left={side === 'left' ? undefined : 2}
@@ -87,9 +122,8 @@ const PhaseContent = ({
             top="50%"
             width="fit-content"
             height="fit-content"
-            left={side === 'left' ? undefined : -80}
-            right={side === 'left' ? -80 : undefined}
-            zIndex={index}
+            left={side === 'left' ? undefined : -x}
+            right={side === 'left' ? -x : undefined}
             sx={{ transform: side === 'left' ? 'translate(50%,-50%)' : 'translate(-50%,-50%)' }}
           >
             {inactive ? <InactiveDot /> : <ActiveDot />}
@@ -121,9 +155,29 @@ interface PhaseProps {
 const Phase = ({ item, nodeProps, fadeOut }: PhaseProps) => {
   const rightData = item.contents.filter((_, i) => i % 2 === 0);
   const leftData = item.contents.filter((_, i) => i % 2 === 1);
+  const [nodes, setNodes] = useState(item.contents.map(() => ({ position: 0, height: 0 })));
+  const finishNodeRendering = !!nodes[nodes.length - 1].height;
+  const [marginTops, setMarginTops] = useState(item.contents.map(() => 0));
+
+  useEffect(() => {
+    if (finishNodeRendering) {
+      const newNodes = nodes.reduce<(NodeData & { marginTop: number })[]>((prev, node, index) => {
+        if (index === 0 || index === 1) {
+          return [...prev, { ...node, marginTop: node.position }];
+        }
+        const marginTop =
+          prev[index - 2].position + prev[index - 2].height + MIN_SPACE_SAME_SIDE >
+          prev[index - 1].position + MIN_SPACE_OPPOSITE_SIDE
+            ? MIN_SPACE_SAME_SIDE
+            : prev[index - 1].position + MIN_SPACE_OPPOSITE_SIDE - (prev[index - 2].position + prev[index - 2].height);
+        return [...prev, { ...node, position: node.position + marginTop - MIN_SPACE_SAME_SIDE, marginTop }];
+      }, []);
+      setMarginTops(newNodes.map((node) => node.marginTop));
+    }
+  }, [finishNodeRendering, nodes]);
 
   return (
-    <Stack direction="row" position="relative">
+    <Stack direction="row" position="relative" justifyContent="center">
       <Box
         border={item.inactive ? '1px solid #1B300A' : '1px solid #2C3F1B'}
         height="100%"
@@ -148,17 +202,33 @@ const Phase = ({ item, nodeProps, fadeOut }: PhaseProps) => {
           }}
         />
       )}
-      <Stack spacing={8} flex={1} mt={42} mb={6}>
+      <Stack flex={1} mt={36} mb={6}>
         {leftData.map((data, index) => (
-          <PhaseContent key={data.title} data={data} side="left" inactive={item.inactive} index={index * 2 + 2} />
+          <PhaseContent
+            key={data.title}
+            side="left"
+            inactive={item.inactive}
+            index={index * 2 + 1}
+            y={marginTops[index * 2 + 1]}
+            x={(nodeProps?.width || 120) / 2 + 20}
+            {...{ data, nodes, setNodes, finishNodeRendering }}
+          />
         ))}
       </Stack>
       <PhaseNode inactive={item.inactive} {...nodeProps}>
         {item.title}
       </PhaseNode>
-      <Stack spacing={8} flex={1} mt={36} mb={6}>
+      <Stack flex={1} mt={36} mb={6}>
         {rightData.map((data, index) => (
-          <PhaseContent key={data.title} data={data} side="right" inactive={item.inactive} index={index * 2 + 1} />
+          <PhaseContent
+            key={data.title}
+            side="right"
+            inactive={item.inactive}
+            index={index * 2}
+            y={marginTops[index * 2]}
+            x={(nodeProps?.width || 120) / 2 + 20}
+            {...{ data, nodes, setNodes, finishNodeRendering }}
+          />
         ))}
       </Stack>
     </Stack>

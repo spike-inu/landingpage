@@ -28,7 +28,7 @@ const Background = (props: IconProps) => {
           filterUnits="userSpaceOnUse"
           colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -43,7 +43,7 @@ const Background = (props: IconProps) => {
           <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_40_5613" result="shape" />
         </filter>
         <linearGradient id="paint0_linear_40_5613" x1="341" y1="0" x2="341" y2="682" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#1F2022" />
+          <stop stopColor="#1F2022" />
           <stop offset="0.796875" stopColor="#1F2022" stopOpacity="0" />
         </linearGradient>
       </defs>
