@@ -1,6 +1,8 @@
+import React from 'react';
+
 export interface TokenProps {
   name: string;
-  Icon: any;
+  Icon: React.FC | string;
   index?: number;
 }
 

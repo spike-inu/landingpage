@@ -35,7 +35,6 @@ const Wrapper = styled(ButtonBase)(
 );
 
 const Desktop: React.FC<FeatureItemProps> = ({ Icon, title, description, highlight, index }) => {
-  console.log(title.split(highlight));
   return (
     <Grid item md={6} sm={12} sx={{ transform: index % 2 === 1 ? 'translateY(30px)' : 'translateY(-30px)' }}>
       <Wrapper>

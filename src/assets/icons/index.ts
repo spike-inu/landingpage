@@ -48,3 +48,5 @@ export { default as InstagramIcon } from './Instagram';
 export { default as MessariIcon } from './Messari';
 export { default as CronosIcon } from './Cronos';
 export { default as OptimismIcon } from './Optimism';
+export { default as RaydiumIcon } from './Raydium';
+export { default as CustomIcon } from './CustomIcon';

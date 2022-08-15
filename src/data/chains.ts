@@ -33,6 +33,9 @@ import {
   TerraIcon,
   TRADEJOEIcon,
   UniswapIcon,
+  CronosIcon,
+  RaydiumIcon,
+  OptimismIcon,
 } from 'assets/icons';
 import { ChainProps } from './types';
 
@@ -170,16 +173,74 @@ const items: Array<ChainProps> = [
     ],
   },
   {
-    name: 'OkExChain',
-    Icon: OKExChainIcon,
-  },
-  {
-    name: 'Artribum',
-    Icon: ArbirtumIcon,
+    name: 'Cronos',
+    Icon: CronosIcon,
+    swaps: [
+      {
+        Icon: 'https://assets.coingecko.com/markets/images/736/small/vvs-finance.jpeg?1636702806',
+        name: 'VVSRouter',
+      },
+      {
+        Icon: 'https://assets.coingecko.com/markets/images/764/small/g7GDg3bv_400x400.jpg?1641539227',
+        name: 'MM Finance',
+      },
+      {
+        Icon: 'https://assets.coingecko.com/markets/images/762/small/cronaswap.png?1641437204',
+        name: 'Cronaswap',
+      },
+    ],
   },
   {
     name: 'Solana',
     Icon: SolanaIcon,
+    swaps: [
+      {
+        Icon: RaydiumIcon,
+        name: 'Raydium',
+      },
+    ],
+  },
+  {
+    name: 'OkExChain',
+    Icon: OKExChainIcon,
+    swaps: [
+      {
+        Icon: 'https://s2.coinmarketcap.com/static/img/coins/64x64/6596.png',
+        name: 'CherrySwap',
+      },
+      {
+        Icon: 'https://s2.coinmarketcap.com/static/img/coins/64x64/11146.png',
+        name: 'JSwap',
+      },
+      {
+        Icon: 'https://s2.coinmarketcap.com/static/img/coins/64x64/9479.png',
+        name: 'KSwap',
+      },
+      {
+        Icon: 'https://s2.coinmarketcap.com/static/img/coins/64x64/17557.png',
+        name: 'Islandswap',
+      },
+    ],
+  },
+  {
+    name: 'Artribum',
+    Icon: ArbirtumIcon,
+    swaps: [
+      {
+        Icon: 'https://s2.coinmarketcap.com/static/img/exchanges/64x64/1141.png',
+        name: 'SushiSwap',
+      },
+    ],
+  },
+  {
+    name: 'Optimism',
+    Icon: OptimismIcon,
+    swaps: [
+      {
+        Icon: 'https://s2.coinmarketcap.com/static/img/coins/64x64/7083.png',
+        name: 'Uniswap',
+      },
+    ],
   },
   {
     name: 'Terra',
