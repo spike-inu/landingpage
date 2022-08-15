@@ -1,4 +1,4 @@
-import { IconProps } from 'components';
+import { IconProps } from './types';
 import React from 'react';
 
 const Icon = (props: IconProps) => {
