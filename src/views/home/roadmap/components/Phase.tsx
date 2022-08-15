@@ -3,14 +3,24 @@ import { FC } from 'react';
 import { ItemContentProps, ItemProps } from '../types';
 import { ActiveDot, InactiveDot } from './PhaseDot';
 
-const PhaseNode: FC<{ inactive?: boolean }> = ({ children, inactive }) => {
+interface PhaseNodeProps {
+  width?: number;
+  height?: number;
+}
+
+const PhaseNode: FC<PhaseNodeProps & { inactive?: boolean }> = ({ children, inactive, width = 120, height = 120 }) => {
   return (
-    <Box px={5} sx={{ filter: 'drop-shadow(0px 4px 20px rgba(135, 228, 46, 0.5))' }}>
+    <Box
+      px={5}
+      sx={{
+        filter: 'drop-shadow(0px 4px 20px rgba(135, 228, 46, 0.5))',
+      }}
+    >
       <Stack
         bgcolor={inactive ? '#91FE39' : 'primary.main'}
         color={inactive ? 'text.primary' : undefined}
-        width={120}
-        height={120}
+        width={width}
+        height={height}
         alignItems="center"
         justifyContent="center"
         fontSize={16}
@@ -24,8 +34,8 @@ const PhaseNode: FC<{ inactive?: boolean }> = ({ children, inactive }) => {
           position="absolute"
           bgcolor={inactive ? '#1B300A' : 'primary.main'}
           zIndex={-1}
-          width={118}
-          height={118}
+          width={width - 2}
+          height={height - 2}
           sx={{ clipPath: 'polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%)' }}
         />
         {children}
@@ -64,7 +74,7 @@ const PhaseContent = ({
             sx={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)', minWidth: 12 }}
           />
           <Box
-            border={inactive ? '2px solid #1B300A' : '2px solid #2C3F1B'}
+            border={inactive ? '1px solid #1B300A' : '1px solid #2C3F1B'}
             width={80}
             position="absolute"
             top="50%"
@@ -102,26 +112,50 @@ const PhaseContent = ({
   );
 };
 
-const Phase = ({ item }: { item: ItemProps }) => {
+interface PhaseProps {
+  item: ItemProps;
+  nodeProps?: PhaseNodeProps;
+  fadeOut?: boolean;
+}
+
+const Phase = ({ item, nodeProps, fadeOut }: PhaseProps) => {
   const rightData = item.contents.filter((_, i) => i % 2 === 0);
   const leftData = item.contents.filter((_, i) => i % 2 === 1);
 
   return (
     <Stack direction="row" position="relative">
       <Box
-        border={item.inactive ? '2px solid #1B300A' : '2px solid #2C3F1B'}
+        border={item.inactive ? '1px solid #1B300A' : '1px solid #2C3F1B'}
         height="100%"
         position="absolute"
         top={0}
         left="50%"
         sx={{ transform: 'translateX(-50%)' }}
       />
+      {fadeOut && (
+        <Box
+          height={50}
+          position="absolute"
+          bottom={-50}
+          left="50%"
+          sx={{
+            borderWidth: '1px',
+            borderStyle: 'solid',
+            borderImage: item.inactive
+              ? 'linear-gradient(to bottom, #1B300A, rgba(0, 0, 0, 0)) 1 100%'
+              : 'linear-gradient(to bottom, #2C3F1B, rgba(0, 0, 0, 0)) 1 100%',
+            transform: 'translateX(-50%)',
+          }}
+        />
+      )}
       <Stack spacing={8} flex={1} mt={42} mb={6}>
         {leftData.map((data, index) => (
           <PhaseContent key={data.title} data={data} side="left" inactive={item.inactive} index={index * 2 + 2} />
         ))}
       </Stack>
-      <PhaseNode inactive={item.inactive}>{item.title}</PhaseNode>
+      <PhaseNode inactive={item.inactive} {...nodeProps}>
+        {item.title}
+      </PhaseNode>
       <Stack spacing={8} flex={1} mt={36} mb={6}>
         {rightData.map((data, index) => (
           <PhaseContent key={data.title} data={data} side="right" inactive={item.inactive} index={index * 2 + 1} />

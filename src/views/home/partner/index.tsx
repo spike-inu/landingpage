@@ -15,9 +15,9 @@ const Desktop: React.FC = () => {
       </Stack>
 
       <Box>
-        <Grid container spacing={4} justifyContent="center">
+        <Grid container spacing={4} columns={{ xs: 12, md: 5 }}>
           {partners.map((item, index) => (
-            <Grid item key={index} xs={6} md="auto">
+            <Grid item key={index} xs={4} md={1}>
               <Item key={index} index={index} {...item} />;
             </Grid>
           ))}
@@ -32,13 +32,14 @@ const Mobile: React.FC = () => {
     <Page spacing={11} px={{ xs: 0, md: 20 }}>
       <Stack textAlign="center" spacing={2} position="relative">
         <Text sx={{ opacity: 0.47 }}>Our Friends</Text>
-        <Title>On a mission to integrate every chain</Title>
+        <Title>On a mission to</Title>
+        <Title>integrate every chain</Title>
       </Stack>
 
       <Box>
-        <Grid container spacing={4} justifyContent="center">
+        <Grid container spacing={2} columns={{ xs: 12, md: 5 }}>
           {partners.map((item, index) => (
-            <Grid item key={index} xs={4}>
+            <Grid item key={index} xs={4} md={1}>
               <ItemMobile key={index} index={index} {...item} />;
             </Grid>
           ))}
