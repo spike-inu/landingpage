@@ -51,3 +51,4 @@ export { default as OptimismIcon } from './Optimism';
 export { default as RaydiumIcon } from './Raydium';
 export { default as CherrySwapIcon } from './CherrySwap';
 export { default as CustomIcon } from './CustomIcon';
+export { default as CloseIcon } from './Close';

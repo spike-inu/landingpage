@@ -13,10 +13,10 @@ const Icon = (props: IconProps) => {
       {...props}
     >
       <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="28.3168" x2="-1.73336" y1="8.19162" y2="20.2086">
-        <stop offset="0" stop-color="#c200fb" />
-        <stop offset=".489658" stop-color="#3772ff" />
-        <stop offset=".489758" stop-color="#3773fe" />
-        <stop offset="1" stop-color="#5ac4be" />
+        <stop offset="0" stopColor="#c200fb" />
+        <stop offset=".489658" stopColor="#3772ff" />
+        <stop offset=".489758" stopColor="#3773fe" />
+        <stop offset="1" stopColor="#5ac4be" />
       </linearGradient>
       <g fill="url(#a)">
         <path d="m26.8625 12.281v11.4104l-12.6916 7.3261-12.69859-7.3261v-14.65937l12.69859-7.33322 9.7541 5.63441 1.4723-.84941-11.2264-6.48381-14.1709 8.18262v16.35818l14.1709 8.1826 14.171-8.1826v-13.1092z" />

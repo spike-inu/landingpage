@@ -54,7 +54,7 @@ const Mobile: React.FC = () => {
           </Stack>
         </Box>
         <Stack mt={10} alignItems="center">
-          <Image src="/images/how-to-use.png" width="70%" minWidth={200} sx={{ zIndex: 1 }} />
+          <Image src="/images/how-to-use.png" width="70%" sx={{ zIndex: 1, minWidth: 200 }} />
         </Stack>
       </Stack>
     </Page>

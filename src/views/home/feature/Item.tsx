@@ -1,6 +1,6 @@
 import { Grid, Stack, styled, Text, ButtonBase } from 'components';
 import { useDetect } from 'hooks';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { FeatureItemProps } from './types';
 
 const Wrapper = styled(ButtonBase)(
@@ -45,9 +45,9 @@ const Desktop: React.FC<FeatureItemProps> = ({ Icon, title, description, highlig
           {highlight ? (
             <Stack>
               {title.split('\n').map((text) => (
-                <Stack direction="row">
+                <Stack key={text} direction="row">
                   {text.split(highlight).map((each, index) => (
-                    <>
+                    <Fragment key={each}>
                       {!!index && (
                         <Text fontSize={22} lineHeight={1.25} color="primary.main">
                           {highlight}
@@ -56,7 +56,7 @@ const Desktop: React.FC<FeatureItemProps> = ({ Icon, title, description, highlig
                       <Text fontSize={22} lineHeight={1.25}>
                         {each}
                       </Text>
-                    </>
+                    </Fragment>
                   ))}
                 </Stack>
               ))}
@@ -66,9 +66,6 @@ const Desktop: React.FC<FeatureItemProps> = ({ Icon, title, description, highlig
               {title}
             </Text>
           )}
-          {/* <Text fontSize={22} lineHeight={1.25}>
-            {title}
-          </Text> */}
           <Text sx={{ opacity: 0.7 }} id="title">
             {description}
           </Text>
@@ -78,7 +75,7 @@ const Desktop: React.FC<FeatureItemProps> = ({ Icon, title, description, highlig
   );
 };
 
-const Mobile: React.FC<FeatureItemProps> = ({ Icon, title, description }) => {
+const Mobile: React.FC<FeatureItemProps> = ({ Icon, title, description, highlight }) => {
   return (
     <Grid item md={6} sm={12}>
       <Wrapper>
@@ -86,9 +83,30 @@ const Mobile: React.FC<FeatureItemProps> = ({ Icon, title, description }) => {
           <Stack width="100%" alignItems="flex-end">
             <Icon className="icon" color="primary" />
           </Stack>
-          <Text fontSize={22} lineHeight={1.25}>
-            {title}
-          </Text>
+          {highlight ? (
+            <Stack>
+              {title.split('\n').map((text) => (
+                <Stack key={text} direction="row">
+                  {text.split(highlight).map((each, index) => (
+                    <Fragment key={each}>
+                      {!!index && (
+                        <Text fontSize={22} lineHeight={1.25} color="primary.main">
+                          {highlight}
+                        </Text>
+                      )}
+                      <Text fontSize={22} lineHeight={1.25}>
+                        {each}
+                      </Text>
+                    </Fragment>
+                  ))}
+                </Stack>
+              ))}
+            </Stack>
+          ) : (
+            <Text fontSize={22} lineHeight={1.25}>
+              {title}
+            </Text>
+          )}
           <Text sx={{ opacity: 0.7 }} id="title">
             {description}
           </Text>
