@@ -16,7 +16,7 @@ const Wrapper = styled(Box)(
 const View: React.FC<ReportItemProps> = ({ Icon, title, description, index }) => {
   return (
     <Wrapper>
-      <Stack p={8} spacing={8} alignItems="flex-start" textAlign="left">
+      <Stack p={6} spacing={6} alignItems="flex-start" textAlign="left">
         <Stack direction="row" spacing={4} alignItems="center">
           <Icon className="icon" />
           <Subtitle className={`title-${index}`}>{title}</Subtitle>

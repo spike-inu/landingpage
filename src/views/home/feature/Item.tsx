@@ -79,7 +79,7 @@ const Mobile: React.FC<FeatureItemProps> = ({ Icon, title, description, highligh
   return (
     <Grid item md={6} sm={12}>
       <Wrapper>
-        <Stack alignItems="flex-start" textAlign="left" px={10} mt={15} spacing={4} height="100%">
+        <Stack alignItems="flex-start" textAlign="left" px={6} mt={15} spacing={4} height="100%">
           <Stack width="100%" alignItems="flex-end">
             <Icon className="icon" color="primary" />
           </Stack>

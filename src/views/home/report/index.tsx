@@ -8,7 +8,7 @@ import ItemMobile from './ItemMobile';
 
 const Desktop: React.FC = () => {
   return (
-    <Page spacing={10} px={{ xs: 0, md: 20 }}>
+    <Page spacing={20} px={{ xs: 0, md: 20 }}>
       <Stack textAlign="center" spacing={2} position="relative">
         <Text sx={{ opacity: 0.47 }}>Our Report</Text>
         <Title>Report</Title>
@@ -26,7 +26,7 @@ const Desktop: React.FC = () => {
 
 const Mobile: React.FC = () => {
   return (
-    <Page spacing={10} px={{ xs: 0, md: 20 }}>
+    <Page spacing={11} px={{ xs: 0, md: 20 }}>
       <Stack textAlign="center" spacing={2} position="relative">
         <Text sx={{ opacity: 0.47 }}>Our Report</Text>
         <Title>Report</Title>

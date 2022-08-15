@@ -37,7 +37,7 @@ const Desktop: React.FC = () => {
 
 const Mobile: React.FC = () => {
   return (
-    <Page spacing={10} px={{ xs: 0, md: 20 }}>
+    <Page spacing={11} px={{ xs: 0, md: 20 }}>
       <Stack alignItems="center" spacing={2} position="relative">
         <Text sx={{ opacity: 0.47 }}>How to use</Text>
         <Title sx={{ display: 'flex' }}>

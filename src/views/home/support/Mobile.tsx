@@ -13,7 +13,7 @@ const Mobile: React.FC = () => {
   }, []);
 
   return (
-    <Page spacing={10} px={{ xs: 0, md: 20 }}>
+    <Page spacing={11} px={{ xs: 0, md: 20 }}>
       <Stack textAlign="center" spacing={2} position="relative">
         <Text sx={{ opacity: 0.47 }}>Our Support</Text>
         <Title>Blockchains and Liquidity Source</Title>
@@ -47,17 +47,17 @@ const Mobile: React.FC = () => {
             );
           })}
         </Tabs>
-      </Box>
 
-      <Box p={5} bgcolor="rgba(70, 75, 95, 0.2)" borderRadius={2} minHeight={80}>
-        <Stack spacing={5} justifyContent="flex-start">
-          {chains[tab].swaps &&
-            chains[tab].swaps.map((item, index) => (
-              <Box key={index}>
-                <Item {...item} index={index} />
-              </Box>
-            ))}
-        </Stack>
+        <Box mt={4} p={5} bgcolor="rgba(70, 75, 95, 0.2)" borderRadius={2} minHeight={80}>
+          <Stack spacing={5} justifyContent="flex-start">
+            {chains[tab].swaps &&
+              chains[tab].swaps.map((item, index) => (
+                <Box key={index}>
+                  <Item {...item} index={index} />
+                </Box>
+              ))}
+          </Stack>
+        </Box>
       </Box>
     </Page>
   );

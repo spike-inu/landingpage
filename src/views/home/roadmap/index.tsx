@@ -8,7 +8,7 @@ const Desktop: React.FC = () => {
   return (
     <Page px={{ xs: 0, md: 20 }}>
       <Stack
-        spacing={10}
+        spacing={23}
         px={4}
         py={10}
         borderRadius={5}
@@ -40,7 +40,7 @@ const Mobile: React.FC = () => {
   return (
     <Page px={{ xs: 0, md: 20 }}>
       <Stack
-        spacing={10}
+        spacing={11}
         px={4}
         py={10}
         borderRadius={5}

@@ -5,7 +5,7 @@ import Item from './Item';
 
 const View: React.FC = () => {
   return (
-    <Page spacing={10} px={{ xs: 0, md: 20 }} direction={{ xs: 'column', md: 'row' }}>
+    <Page spacing={11} px={{ xs: 0, md: 20 }} direction={{ xs: 'column', md: 'row' }}>
       <Stack textAlign={{ xs: 'center', md: 'left' }} spacing={2} position="relative" width={{ xs: '100%', md: '25%' }}>
         <Text sx={{ opacity: 0.47 }}>Our Contact</Text>
         <Title>Get in touch with us</Title>

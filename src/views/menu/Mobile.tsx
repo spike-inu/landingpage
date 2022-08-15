@@ -79,7 +79,7 @@ const MobileMenu: React.FC = (props) => {
     <>
       <HideOnScroll>
         <AppBar position="fixed" elevation={2}>
-          <Toolbar>
+          <Toolbar sx={{ bgcolor: '#121212' }}>
             <Wrapper>
               <Stack direction="row" alignItems="center" px={4}>
                 <LogoIcon height={32} />

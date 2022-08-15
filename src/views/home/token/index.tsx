@@ -14,7 +14,7 @@ const View: React.FC = () => {
     setTab(newValue);
   }, []);
   return (
-    <Page spacing={10} px={{ xs: 0, md: 20 }}>
+    <Page spacing={{ xs: 11, md: 23 }} px={{ xs: 0, md: 20 }}>
       <Stack textAlign="center" spacing={2} position="relative" alignItems="center">
         <Text sx={{ opacity: 0.47 }}>Our Support</Text>
         <Title>Our Token</Title>
@@ -50,63 +50,19 @@ const View: React.FC = () => {
             );
           })}
         </Tabs>
+
+        <Stack direction="row" justifyContent="center" mt={{ xs: 12, md: 20 }} spacing={4}>
+          <Text fontSize={20} letterSpacing="0.5em">
+            COMING
+          </Text>
+          <Text fontSize={20} letterSpacing="0.5em" color="primary.main">
+            SOON
+          </Text>
+        </Stack>
+        <Stack height={400} mt={{ xs: 6, md: 12 }}>
+          <Background />
+        </Stack>
       </Box>
-      <Stack direction="row" justifyContent="center" p={5} spacing={4}>
-        <Text fontSize={20} letterSpacing="0.5em">
-          COMING
-        </Text>
-        <Text fontSize={20} letterSpacing="0.5em" color="primary.main">
-          SOON
-        </Text>
-      </Stack>
-      <Stack height={400}>
-        <Background />
-      </Stack>
-
-      {/* <Box>
-          <Grid container spacing={20} alignItems="center">
-            <Grid item md={6} xs={12}>
-              <Logo width="100%" />
-            </Grid>
-            <Grid item md={5} xs={12}>
-              <Stack spacing={10}>
-                <Stack spacing={5}>
-                  <Stack direction="row" justifyContent="space-between" alignItems="center">
-                    <Text>Address on {chains[tab].name}:</Text>
-                    <Text variant="h6">0xagd...87s3h5</Text>
-                  </Stack>
-                  <Stack direction="row" justifyContent="space-between" alignItems="center">
-                    <Text>Price:</Text>
-                    <Text variant="h6">$1.02</Text>
-                  </Stack>
-
-                  <Stack direction="row" justifyContent="space-between" alignItems="center">
-                    <Text>Fully Diluted MC:</Text>
-                    <Text variant="h6">$1,000,000</Text>
-                  </Stack>
-                  <Stack direction="row" justifyContent="space-between" alignItems="center">
-                    <Text>Total supply:</Text>
-                    <Text variant="h6">$ 1,000,000,000 ABR</Text>
-                  </Stack>
-                </Stack>
-
-                <Box>
-                  <Grid container spacing={2}>
-                    <Grid item>
-                      <BuyABR />
-                    </Grid>
-                    <Grid item>
-                      <StakeABR />
-                    </Grid>
-                    <Grid item>
-                      <Tokenomic />
-                    </Grid>
-                  </Grid>
-                </Box>
-              </Stack>
-            </Grid>
-          </Grid>
-        </Box> */}
     </Page>
   );
 };

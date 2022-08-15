@@ -19,7 +19,7 @@ const View: React.FC = () => {
           </Stack>
         </Stack>
 
-        <Stack mt={15} spacing={10} width={{ xs: '100%', md: '60%' }}>
+        <Stack mt={{ xs: 13, md: 20 }} spacing={10} width={{ xs: '100%', md: '60%' }}>
           {partnership.map((item, index) => (
             <Box key={index}>
               <Text color="primary.main">{item.title}</Text>
