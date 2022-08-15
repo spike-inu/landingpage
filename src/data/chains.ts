@@ -48,6 +48,7 @@ const items: Array<ChainProps> = [
       {
         Icon: UniswapIcon,
         name: 'UniswapV2',
+        props: { style: { background: '#fdf4fa', borderRadius: '50%', width: 30, height: 30, padding: 7 } },
       },
       {
         Icon: SushiswapIcon,
@@ -239,8 +240,9 @@ const items: Array<ChainProps> = [
     Icon: OptimismIcon,
     swaps: [
       {
-        Icon: 'https://s2.coinmarketcap.com/static/img/coins/64x64/7083.png',
+        Icon: UniswapIcon,
         name: 'Uniswap',
+        props: { style: { background: '#fdf4fa', borderRadius: '50%', width: 30, height: 30, padding: 7 } },
       },
     ],
   },
