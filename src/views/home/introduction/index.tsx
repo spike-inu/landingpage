@@ -83,40 +83,35 @@ const Desktop: React.FC = () => {
 const Mobile: React.FC = () => {
   const { subtitle, description } = data;
   return (
-    <Stack alignItems="center">
-      <>
-        <BackgroundGrid width={120} right={0} top={240} />
-      </>
-      <Stack>
-        <Stack sx={{ mt: '10vh', px: 5 }}>
-          <AppNameStyled fontSize={18} fontWeight={600} />
-          <Stack mt={4} spacing={8} alignItems="flex-start">
-            <Stack direction="row" alignItems="center" spacing={4}>
-              {subtitle.split(' - ').map((text, index) => (
-                <Fragment key={index}>
-                  {!!index && (
-                    <Box
-                      sx={{
-                        width: 14,
-                        height: 14,
-                        bgcolor: 'primary.main',
-                        borderRadius: '50%',
-                      }}
-                    />
-                  )}
-                  <Text fontSize={40} fontWeight="bold" letterSpacing="-0.01em">
-                    {text}
-                  </Text>
-                </Fragment>
-              ))}
-            </Stack>
-            <Text sx={{ opacity: 0.7 }}>{description}</Text>
-            <LaunchApp variant="contained" size="large" fullWidth />
+    <Stack mt={22}>
+      <BackgroundGrid width={120} right={0} top={240} sx={{ transform: 'rotate(180deg)' }} />
+      <Stack px={5}>
+        <AppNameStyled fontSize={18} fontWeight={600} />
+        <Stack mt={4} spacing={8} alignItems="flex-start">
+          <Stack direction="row" alignItems="center" flexWrap="wrap">
+            {subtitle.split(' - ').map((text, index) => (
+              <Fragment key={index}>
+                {!!index && (
+                  <Box
+                    mx={4}
+                    width={{ xs: 12, md: 14 }}
+                    height={{ xs: 12, md: 14 }}
+                    bgcolor="primary.main"
+                    borderRadius="50%"
+                  />
+                )}
+                <Text fontSize={{ xs: 36, md: 40 }} fontWeight="bold" letterSpacing="-0.01em">
+                  {text}
+                </Text>
+              </Fragment>
+            ))}
           </Stack>
+          <Text sx={{ opacity: 0.7 }}>{description}</Text>
+          <LaunchApp variant="contained" size="large" fullWidth />
         </Stack>
-        <Stack mt={8}>
-          <Dashboard />
-        </Stack>
+      </Stack>
+      <Stack mt={8}>
+        <Dashboard />
       </Stack>
     </Stack>
   );

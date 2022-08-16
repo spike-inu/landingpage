@@ -7,14 +7,15 @@ const MIN_SPACE_SAME_SIDE = 32;
 const MIN_SPACE_OPPOSITE_SIDE = 32;
 
 interface PhaseNodeProps {
-  width?: number;
-  height?: number;
+  width: number;
+  height: number;
+  padding: number;
 }
 
-const PhaseNode: FC<PhaseNodeProps & { inactive?: boolean }> = ({ children, inactive, width = 120, height = 120 }) => {
+const PhaseNode: FC<PhaseNodeProps & { inactive?: boolean }> = ({ children, inactive, width, height, padding }) => {
   return (
     <Box
-      px={5}
+      px={padding / 4}
       sx={{
         filter: 'drop-shadow(0px 4px 20px rgba(135, 228, 46, 0.5))',
       }}
@@ -26,7 +27,7 @@ const PhaseNode: FC<PhaseNodeProps & { inactive?: boolean }> = ({ children, inac
         height={height}
         alignItems="center"
         justifyContent="center"
-        fontSize={16}
+        fontSize={{ xs: 14, md: 16 }}
         fontWeight={600}
         sx={{
           clipPath: 'polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%)',
@@ -59,8 +60,8 @@ interface PhaseContentProps {
   index?: number;
   nodes: NodeData[];
   setNodes: React.Dispatch<React.SetStateAction<NodeData[]>>;
-  y?: number;
-  x?: number;
+  y: number;
+  x: number;
 }
 
 const PhaseContent = ({ data, side = 'left', inactive, index, nodes, setNodes, x, y }: PhaseContentProps) => {
@@ -148,16 +149,19 @@ const PhaseContent = ({ data, side = 'left', inactive, index, nodes, setNodes, x
 
 interface PhaseProps {
   item: ItemProps;
-  nodeProps?: PhaseNodeProps;
+  size?: 'xs' | 'md';
   fadeOut?: boolean;
 }
 
-const Phase = ({ item, nodeProps, fadeOut }: PhaseProps) => {
+const Phase = ({ item, size = 'md', fadeOut = false }: PhaseProps) => {
   const rightData = item.contents.filter((_, i) => i % 2 === 0);
   const leftData = item.contents.filter((_, i) => i % 2 === 1);
   const [nodes, setNodes] = useState(item.contents.map(() => ({ position: 0, height: 0 })));
   const finishNodeRendering = !!nodes[nodes.length - 1].height;
   const [marginTops, setMarginTops] = useState(item.contents.map(() => 0));
+
+  const { width, height, padding } =
+    size === 'xs' ? { width: 80, height: 80, padding: 0 } : { width: 120, height: 120, padding: 20 };
 
   useEffect(() => {
     if (finishNodeRendering) {
@@ -202,7 +206,7 @@ const Phase = ({ item, nodeProps, fadeOut }: PhaseProps) => {
           }}
         />
       )}
-      <Stack flex={1} mt={36} mb={6}>
+      <Stack flex={1} mt={36} mb={6} sx={{ maxWidth: `calc(50% - ${width / 2}px)` }}>
         {leftData.map((data, index) => (
           <PhaseContent
             key={data.title}
@@ -210,15 +214,15 @@ const Phase = ({ item, nodeProps, fadeOut }: PhaseProps) => {
             inactive={item.inactive}
             index={index * 2 + 1}
             y={marginTops[index * 2 + 1]}
-            x={(nodeProps?.width || 120) / 2 + 20}
+            x={width / 2 + padding}
             {...{ data, nodes, setNodes, finishNodeRendering }}
           />
         ))}
       </Stack>
-      <PhaseNode inactive={item.inactive} {...nodeProps}>
+      <PhaseNode inactive={item.inactive} {...{ width, height, padding }}>
         {item.title}
       </PhaseNode>
-      <Stack flex={1} mt={36} mb={6}>
+      <Stack flex={1} mt={36} mb={6} sx={{ maxWidth: `calc(50% - ${width / 2}px)` }}>
         {rightData.map((data, index) => (
           <PhaseContent
             key={data.title}
@@ -226,7 +230,7 @@ const Phase = ({ item, nodeProps, fadeOut }: PhaseProps) => {
             inactive={item.inactive}
             index={index * 2}
             y={marginTops[index * 2]}
-            x={(nodeProps?.width || 120) / 2 + 20}
+            x={width / 2 + padding}
             {...{ data, nodes, setNodes, finishNodeRendering }}
           />
         ))}

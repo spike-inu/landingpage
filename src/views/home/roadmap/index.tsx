@@ -64,7 +64,7 @@ const Mobile: React.FC = () => {
           </Stack>
           <Stack>
             {data.map((item) => (
-              <Phase item={item} key={item.title} nodeProps={{ width: 80, height: 80 }} fadeOut />
+              <Phase item={item} key={item.title} size="xs" fadeOut />
             ))}
           </Stack>
         </Stack>
