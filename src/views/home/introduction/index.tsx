@@ -51,15 +51,14 @@ const Desktop: React.FC = () => {
                     <Fragment key={index}>
                       {!!index && (
                         <Box
-                          sx={{
-                            width: 14,
-                            height: 14,
-                            bgcolor: 'primary.main',
-                            borderRadius: '50%',
-                          }}
+                          mx={{ xs: 3, md: 4 }}
+                          width={{ xs: 12, md: 14 }}
+                          height={{ xs: 12, md: 14 }}
+                          bgcolor="primary.main"
+                          borderRadius="50%"
                         />
                       )}
-                      <Text fontSize={40} fontWeight="bold" letterSpacing="-0.01em">
+                      <Text fontSize={{ xs: 32, md: 40 }} fontWeight="bold" letterSpacing="-0.01em">
                         {text}
                       </Text>
                     </Fragment>
@@ -93,14 +92,14 @@ const Mobile: React.FC = () => {
               <Fragment key={index}>
                 {!!index && (
                   <Box
-                    mx={4}
+                    mx={{ xs: 3, md: 4 }}
                     width={{ xs: 12, md: 14 }}
                     height={{ xs: 12, md: 14 }}
                     bgcolor="primary.main"
                     borderRadius="50%"
                   />
                 )}
-                <Text fontSize={{ xs: 36, md: 40 }} fontWeight="bold" letterSpacing="-0.01em">
+                <Text fontSize={{ xs: 32, md: 40 }} fontWeight="bold" letterSpacing="-0.01em">
                   {text}
                 </Text>
               </Fragment>
