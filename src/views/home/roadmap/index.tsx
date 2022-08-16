@@ -22,9 +22,6 @@ const Desktop: React.FC = () => {
             <Title>Roadmap</Title>
           </Stack>
 
-          {/* <Stack>
-            <Phase item={data[0]} fadeOut />
-          </Stack> */}
           <Stack direction="row">
             <Box width="50%">
               {data.slice(0, 3).map((item) => (

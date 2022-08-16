@@ -1,5 +1,5 @@
 import { Box, Stack, Text } from 'components';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { ItemContentProps, ItemProps } from '../types';
 import { ActiveDot, InactiveDot } from './PhaseDot';
 
@@ -65,34 +65,54 @@ interface PhaseContentProps {
 }
 
 const PhaseContent = ({ data, side = 'left', inactive, index, nodes, setNodes, x, y }: PhaseContentProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleResize = useCallback(
+    (entries: ResizeObserverEntry[]) => {
+      if (!Array.isArray(entries)) {
+        return;
+      }
+      const entry = entries[0];
+      const newHeight = entry.contentRect.height;
+      if (nodes[index].height === newHeight) return;
+      const newNodes = [...nodes];
+      if (index === 0) {
+        newNodes[0] = {
+          position: 0,
+          height: newHeight,
+        };
+        setNodes(newNodes);
+      } else if (index === 1) {
+        newNodes[1] = {
+          position: MIN_SPACE_OPPOSITE_SIDE,
+          height: newHeight,
+        };
+        setNodes(newNodes);
+      } else if (newNodes[index - 2].height) {
+        newNodes[index] = {
+          position: newNodes[index - 2].position + newNodes[index - 2].height + MIN_SPACE_SAME_SIDE,
+          height: newHeight,
+        };
+        setNodes(newNodes);
+      }
+    },
+    [index, nodes, setNodes],
+  );
+
+  useLayoutEffect(() => {
+    const element = ref.current;
+    if (!element) {
+      return;
+    }
+    const observer = new ResizeObserver(handleResize);
+    observer.observe(element);
+    return () => {
+      observer.unobserve(element);
+    };
+  }, [handleResize]);
+
   return (
-    <Stack
-      ref={(ref: HTMLDivElement | null) => {
-        if (!ref) return;
-        if (nodes[index].height) return;
-        const newNodes = [...nodes];
-        if (index === 0) {
-          newNodes[0] = {
-            position: 0,
-            height: ref.clientHeight,
-          };
-          setNodes(newNodes);
-        } else if (index === 1) {
-          newNodes[1] = {
-            position: MIN_SPACE_OPPOSITE_SIDE,
-            height: ref.clientHeight,
-          };
-          setNodes(newNodes);
-        } else if (newNodes[index - 2].height) {
-          newNodes[index] = {
-            position: newNodes[index - 2].position + newNodes[index - 2].height + MIN_SPACE_SAME_SIDE,
-            height: ref.clientHeight,
-          };
-          setNodes(newNodes);
-        }
-      }}
-      sx={{ marginTop: y ? y / 4 : undefined }}
-    >
+    <Stack ref={ref} sx={{ marginTop: y ? y / 4 : undefined }}>
       <Stack direction={side === 'left' ? 'row' : 'row-reverse'} justifyContent="flex-end" spacing={2}>
         <Text
           fontWeight={600}
@@ -157,11 +177,16 @@ const Phase = ({ item, size = 'md', fadeOut = false }: PhaseProps) => {
   const rightData = item.contents.filter((_, i) => i % 2 === 0);
   const leftData = item.contents.filter((_, i) => i % 2 === 1);
   const [nodes, setNodes] = useState(item.contents.map(() => ({ position: 0, height: 0 })));
-  const finishNodeRendering = !!nodes[nodes.length - 1].height;
   const [marginTops, setMarginTops] = useState(item.contents.map(() => 0));
+  const [showChild, setShowChild] = useState(false);
+  const finishNodeRendering = !!showChild && !!nodes[nodes.length - 1].height;
 
   const { width, height, padding } =
     size === 'xs' ? { width: 80, height: 80, padding: 0 } : { width: 120, height: 120, padding: 20 };
+
+  useEffect(() => {
+    setShowChild(true);
+  }, []);
 
   useEffect(() => {
     if (finishNodeRendering) {
@@ -179,6 +204,10 @@ const Phase = ({ item, size = 'md', fadeOut = false }: PhaseProps) => {
       setMarginTops(newNodes.map((node) => node.marginTop));
     }
   }, [finishNodeRendering, nodes]);
+
+  if (!showChild) {
+    return null;
+  }
 
   return (
     <Stack direction="row" position="relative" justifyContent="center">
@@ -206,7 +235,7 @@ const Phase = ({ item, size = 'md', fadeOut = false }: PhaseProps) => {
           }}
         />
       )}
-      <Stack flex={1} mt={36} mb={6} sx={{ maxWidth: `calc(50% - ${width / 2}px)` }}>
+      <Stack flex={1} mt={36} mb={6} sx={{ maxWidth: `calc(50% - ${width / 2 + padding}px)` }}>
         {leftData.map((data, index) => (
           <PhaseContent
             key={data.title}
@@ -222,7 +251,7 @@ const Phase = ({ item, size = 'md', fadeOut = false }: PhaseProps) => {
       <PhaseNode inactive={item.inactive} {...{ width, height, padding }}>
         {item.title}
       </PhaseNode>
-      <Stack flex={1} mt={36} mb={6} sx={{ maxWidth: `calc(50% - ${width / 2}px)` }}>
+      <Stack flex={1} mt={36} mb={6} sx={{ maxWidth: `calc(50% - ${width / 2 + padding}px)` }}>
         {rightData.map((data, index) => (
           <PhaseContent
             key={data.title}
