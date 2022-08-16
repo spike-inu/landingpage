@@ -1,6 +1,6 @@
 import { ButtonBase, Grid, Stack, StackProps, styled, Text } from 'components';
 import { SocialProps } from 'data/types';
-import React, { useCallback } from 'react';
+import React from 'react';
 
 const Wrapper = styled((props: StackProps) => {
   return (
@@ -11,7 +11,7 @@ const Wrapper = styled((props: StackProps) => {
       alignItems="center"
       bgcolor="background.paper"
       borderRadius={2}
-      minWidth={{ md: 200, xs: 'none' }}
+      // minWidth={{ md: 200, xs: 'none' }}
       width={{ md: 'none', xs: '100%' }}
       height={50}
       {...props}
@@ -19,10 +19,12 @@ const Wrapper = styled((props: StackProps) => {
   );
 })`
   mix-blend-mode: luminosity;
-  opacity: 0.7;
+  opacity: 0.5;
+  color: #fff;
   :hover {
     mix-blend-mode: normal;
     opacity: 1;
+    color: #f6f6f6;
   }
   transition: 0.5s;
 `;

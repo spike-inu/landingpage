@@ -3,10 +3,6 @@ import ThemeContext from 'contexts/ThemeContext';
 import { ToastContextProvider } from 'contexts/ToastContext';
 import React from 'react';
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
 const Providers: React.FC = ({ children }) => {
   return (
     <ThemeContext>

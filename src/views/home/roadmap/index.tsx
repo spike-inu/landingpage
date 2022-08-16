@@ -1,83 +1,86 @@
-import { Box, Page, Stack, Title } from 'components';
+import { Box, Page, Stack, Text, Title } from 'components';
 import { useDetect } from 'hooks';
 import React from 'react';
-import { Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import Background from './components/Background';
+import Phase from './components/Phase';
 import data from './data.json';
-import ItemMobile from './ItemMobile';
 
 const Desktop: React.FC = () => {
   return (
-    <Stack>
-      <Page spacing={20}>
-        <Stack textAlign="center" spacing={2} position="relative">
-          <Title>Roadmap</Title>
-        </Stack>
+    <Box position="relative">
+      <Page px={{ xs: 0, md: 20 }}>
+        <Stack
+          spacing={23}
+          px={4}
+          py={10}
+          borderRadius={5}
+          sx={{ background: 'linear-gradient(180deg, #121212 0%, #121212 50.13%, rgba(18, 18, 18, 0) 81.59%)' }}
+          position="relative"
+        >
+          <Stack textAlign="center" spacing={2}>
+            <Text sx={{ opacity: 0.47 }}>Our Roadmap</Text>
+            <Title>Roadmap</Title>
+          </Stack>
 
-        <Box>
-          {/* <Divider sx={{ mb: -12.5, display: { md: 'flex', sm: 'none', xs: 'none' } }} /> */}
-          <Stack alignItems="center">
-            <Box maxWidth="lg">
-              <Swiper
-                slidesPerView={2}
-                spaceBetween={0}
-                // loop={true}
-                autoHeight
-                pagination={{
-                  dynamicBullets: true,
-                  clickable: true,
-                }}
-                modules={[Pagination]}
-                style={{ paddingBottom: 80 }}
-              >
-                {data.map((item, index) => {
-                  return (
-                    <SwiperSlide style={{ background: 'transparent', height: '100%' }} key={index}>
-                      <ItemMobile {...item} index={index} />
-                    </SwiperSlide>
-                  );
-                })}
-              </Swiper>
+          {/* <Stack>
+            <Phase item={data[0]} fadeOut />
+          </Stack> */}
+          <Stack direction="row">
+            <Box width="50%">
+              {data.slice(0, 3).map((item) => (
+                <Phase item={item} key={item.title} />
+              ))}
+            </Box>
+            <Box width="50%">
+              {data.slice(3).map((item) => (
+                <Phase item={item} key={item.title} fadeOut />
+              ))}
             </Box>
           </Stack>
-        </Box>
+        </Stack>
       </Page>
-    </Stack>
+
+      <Stack position="absolute" right={0} bottom={0} zIndex={0} sx={{ transform: 'translate(0,30%)' }}>
+        <Background />
+      </Stack>
+    </Box>
   );
 };
 
 const Mobile: React.FC = () => {
   return (
-    <Stack px={5}>
-      <Stack textAlign="center" spacing={2} position="relative">
-        <Title>Roadmap</Title>
-      </Stack>
-      <Box>
-        <Stack alignItems="center">
-          <Box maxWidth="lg">
-            <Swiper
-              slidesPerView={1}
-              spaceBetween={80}
-              autoHeight
-              pagination={{
-                dynamicBullets: true,
-                clickable: true,
-              }}
-              modules={[Pagination]}
-              style={{ paddingBottom: 80 }}
-            >
-              {data.map((item, index) => {
-                return (
-                  <SwiperSlide style={{ background: 'transparent' }} key={index}>
-                    <ItemMobile {...item} index={index} />
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </Box>
+    <Box position="relative">
+      <Page px={{ xs: 0, md: 20 }}>
+        <Stack
+          spacing={11}
+          px={4}
+          py={10}
+          borderRadius={5}
+          sx={{ background: 'linear-gradient(180deg, #121212 0%, #121212 50.13%, rgba(18, 18, 18, 0) 81.59%)' }}
+        >
+          <Stack textAlign="center" spacing={2} position="relative">
+            <Text sx={{ opacity: 0.47 }}>Our Roadmap</Text>
+            <Title>Roadmap</Title>
+          </Stack>
+          <Stack>
+            {data.map((item) => (
+              <Phase item={item} key={item.title} size="xs" fadeOut />
+            ))}
+          </Stack>
         </Stack>
-      </Box>
-    </Stack>
+      </Page>
+
+      <Stack
+        position="absolute"
+        right={0}
+        bottom={0}
+        zIndex={0}
+        alignItems="flex-end"
+        sx={{ transform: 'translate(0,50%)' }}
+      >
+        <Background width="50%" />
+      </Stack>
+    </Box>
   );
 };
 

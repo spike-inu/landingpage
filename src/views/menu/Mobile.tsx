@@ -1,27 +1,23 @@
-import { LogoIcon, MenuIcon } from 'assets/icons';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { CloseIcon, LogoIcon, MenuIcon } from 'assets/icons';
 import {
   AppBar,
-  AppName,
   Audit,
+  Collapse,
   IconButton,
   LaunchApp,
+  List,
+  ListItemButton,
   Stack,
   StackProps,
   styled,
   SwipeableDrawer,
+  Text,
   Toolbar,
-  useTheme,
-  ConnectWallet,
-  Grid,
-  Box,
-  Language,
 } from 'components';
-import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import HideOnScroll from './components/HideOnScroll';
-import Item from './components/Item';
 import data from './data.json';
-import socials from 'data/social';
 
 const Wrapper = styled((props: StackProps) => {
   return (
@@ -29,7 +25,7 @@ const Wrapper = styled((props: StackProps) => {
       direction="row"
       alignItems="center"
       justifyContent="space-between"
-      sx={{ width: '100%', py: 4 }}
+      sx={{ width: '100%', py: 2 }}
       {...props}
     />
   );
@@ -37,33 +33,19 @@ const Wrapper = styled((props: StackProps) => {
   position: 'relative',
 });
 
-const AppNameStyled = styled(AppName)`
-  ::first-letter {
-    color: white;
-  }
-`;
-
 const Drawer = styled(SwipeableDrawer)(() => ({
   opacity: 1,
   '.MuiDrawer-paper': {
-    width: ' 80% ',
-    maxWidth: 414,
+    width: '100% ',
   },
 }));
 
 const DrawerWrapper = styled((props: StackProps) => {
-  const { palette } = useTheme();
   return (
     <Stack
       flex={1}
       sx={{
-        bgcolor: '#02071B',
-        border: `1px solid ${palette.primary.main}`,
-        borderBottom: 'none',
-        borderRight: 'none',
-        borderTopLeftRadius: 20,
-        boxShadow: `0px 0px 10px rgba(145, 254, 57, 0.2)`,
-        mt: 20,
+        bgcolor: 'background.paper',
         p: 4,
         position: 'relative',
         zIndex: 2,
@@ -73,19 +55,7 @@ const DrawerWrapper = styled((props: StackProps) => {
   );
 })``;
 
-const IconSocialWrapper = styled(IconButton)`
-  mix-blend-mode: luminosity;
-  opacity: 0.5;
-  :hover {
-    mix-blend-mode: normal;
-    opacity: 1;
-  }
-  transition: 0.5s;
-`;
-
 const MobileMenu: React.FC = (props) => {
-  const router = useRouter();
-
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -94,22 +64,28 @@ const MobileMenu: React.FC = (props) => {
     setOpen(false);
   };
 
-  const handleLogoPress = () => {
-    router.push('/');
-    handleClose();
+  const [expanded, setExpanded] = useState(new Set());
+  const handleClickSubMenu = (item: string) => {
+    const newExpanded = new Set(expanded);
+    if (newExpanded.has(item)) {
+      newExpanded.delete(item);
+    } else {
+      newExpanded.add(item);
+    }
+    setExpanded(newExpanded);
   };
+
   return (
     <>
       <HideOnScroll>
         <AppBar position="fixed" elevation={2}>
-          <Toolbar sx={{ bgcolor: '#111529b2' }}>
+          <Toolbar sx={{ bgcolor: '#121212' }}>
             <Wrapper>
-              <Stack direction="row" alignItems="center" spacing={2}>
-                <LogoIcon width={30} height={32} />
-                <AppNameStyled fontSize={16} />
+              <Stack direction="row" alignItems="center" px={4}>
+                <LogoIcon height={32} />
               </Stack>
               <Stack direction="row" spacing={2}>
-                <ConnectWallet />
+                <LaunchApp />
                 <IconButton onClick={handleOpen}>
                   <MenuIcon />
                 </IconButton>
@@ -129,42 +105,43 @@ const MobileMenu: React.FC = (props) => {
         sx={{ bgcolor: 'transparent' }}
       >
         <DrawerWrapper>
-          <Stack direction="row" alignItems="center" justifyContent="center">
-            <IconButton onClick={handleLogoPress}>
-              <LogoIcon width={28} height={28} />
+          <Stack direction="row" justifyContent="flex-end">
+            <IconButton onClick={handleClose}>
+              <CloseIcon />
             </IconButton>
-            <AppNameStyled />
           </Stack>
-          <Stack flex={1} spacing={4}>
-            <Stack alignItems="flex-start" mt={5}>
-              {data.items.map((item, index) => {
-                return <Item key={index} {...item} index={index} />;
-              })}
-            </Stack>
-            <Stack alignItems="flex-start">
-              <Stack spacing={2}>
-                <Audit fullWidth />
-                <LaunchApp fullWidth />
-              </Stack>
-            </Stack>
+          <Stack direction="row" spacing={2} mt={4}>
+            <Audit fullWidth />
+            <LaunchApp fullWidth />
           </Stack>
-          <Box>
-            <Grid container spacing={2} justifyContent="space-around" alignItems="baseline">
-              {socials.map((item, index) => {
-                const { Icon } = item;
-                return (
-                  <Grid display="flex" xs={3} alignItems="center" justifyContent="center" item key={index}>
-                    <IconSocialWrapper>
-                      <Icon width={28} height={28} />
-                    </IconSocialWrapper>
-                  </Grid>
-                );
-              })}
-            </Grid>
-          </Box>
-          <Stack mt={5} alignItems="flex-start">
-            <Language />
-          </Stack>
+          <List component="nav" aria-labelledby="nested-list-subheader">
+            {data.items.map((item) =>
+              item.subs.length ? (
+                <Fragment key={item.title}>
+                  <ListItemButton
+                    onClick={() => handleClickSubMenu(item.title)}
+                    sx={{ mt: 4, py: 2.5, justifyContent: 'space-between' }}
+                  >
+                    <Text fontWeight={600}>{item.title}</Text>
+                    {expanded.has(item.title) ? <ExpandLess /> : <ExpandMore />}
+                  </ListItemButton>
+                  <Collapse in={expanded.has(item.title)} timeout="auto">
+                    <List component="div">
+                      {item.subs.map((subItem) => (
+                        <ListItemButton key={subItem.title} sx={{ pl: 8, py: 2.5 }}>
+                          <Text fontWeight={600}>{subItem.title}</Text>
+                        </ListItemButton>
+                      ))}
+                    </List>
+                  </Collapse>
+                </Fragment>
+              ) : (
+                <ListItemButton key={item.title} sx={{ mt: 4, py: 2.5 }}>
+                  <Text fontWeight={600}>{item.title}</Text>
+                </ListItemButton>
+              ),
+            )}
+          </List>
         </DrawerWrapper>
       </Drawer>
       {props.children}

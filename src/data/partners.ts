@@ -9,78 +9,83 @@ import {
   FuseIcon,
   HarmonyIcon,
   HecoIcon,
-  NearIcon,
-  OKExChainIcon,
   PolygonIcon,
   SolanaIcon,
-  TerraIcon,
+  CronosIcon,
+  OptimismIcon,
+  OKExChainIcon,
 } from 'assets/icons';
 import { ChainProps } from './types';
 
 const items: Array<ChainProps> = [
   {
-    name: 'Solana',
-    Icon: SolanaIcon,
+    name: 'ETH',
+    Icon: EtherumIcon,
   },
   {
-    name: 'Fuse',
-    Icon: FuseIcon,
-  },
-  {
-    name: 'Harmony',
-    Icon: HarmonyIcon,
-  },
-  {
-    name: 'HECO',
-    Icon: HecoIcon,
-  },
-  {
-    name: 'Near',
-    Icon: NearIcon,
+    name: 'BSC',
+    Icon: BscIcon,
   },
   {
     name: 'Polygon',
     Icon: PolygonIcon,
   },
   {
-    name: 'Terra',
-    Icon: TerraIcon,
-  },
-  {
-    name: 'Aurora',
-    Icon: AuroraIcon,
-  },
-
-  {
-    name: 'Avalanche',
+    name: 'Avax',
     Icon: AvalancheIcon,
   },
   {
-    name: 'BNB Chain',
-    Icon: BscIcon,
+    name: 'Solana',
+    Icon: SolanaIcon,
+  },
+  {
+    name: 'Cronos',
+    Icon: CronosIcon,
+  },
+  {
+    name: 'Fantom',
+    Icon: FantomIcon,
+  },
+  {
+    name: 'HECO',
+    Icon: HecoIcon,
+  },
+  {
+    name: 'Artribum',
+    Icon: ArbirtumIcon,
+  },
+  {
+    name: 'Optimism',
+    Icon: OptimismIcon,
   },
   {
     name: 'Celo',
     Icon: CeloIcon,
   },
   {
-    name: 'Etherum',
-    Icon: EtherumIcon,
+    name: 'Harmony',
+    Icon: HarmonyIcon,
   },
-
   {
-    name: 'Fantom',
-    Icon: FantomIcon,
+    name: 'Aurora',
+    Icon: AuroraIcon,
   },
-
+  {
+    name: 'Fuse',
+    Icon: FuseIcon,
+  },
   {
     name: 'OkExChain',
     Icon: OKExChainIcon,
   },
-  {
-    name: 'Artribum',
-    Icon: ArbirtumIcon,
-  },
+  // {
+  //   name: 'Near',
+  //   Icon: NearIcon,
+  // },
+  // {
+  //   name: 'Terra',
+  //   Icon: TerraIcon,
+  // },
 ];
 
 export default items;

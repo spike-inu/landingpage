@@ -1,4 +1,4 @@
-import { Pressable, useTheme } from 'components';
+import { Pressable } from 'components';
 import React, { FC, memo } from 'react';
 
 const View: FC = () => {

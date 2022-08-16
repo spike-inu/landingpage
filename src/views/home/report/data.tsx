@@ -1,4 +1,4 @@
-import { AvalancheIcon, BscIcon, LogoIcon, MessariIcon } from 'assets/icons';
+import { LogoIcon, MessariIcon } from 'assets/icons';
 import { ReportItemProps } from './types';
 import { Image } from 'components';
 

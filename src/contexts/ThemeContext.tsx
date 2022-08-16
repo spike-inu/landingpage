@@ -16,11 +16,11 @@ const styles: ThemeOptions = {
     },
     divider: '#464b5f73',
     background: {
-      default: '#02071b',
-      paper: '#111529',
+      default: '#030303',
+      paper: '#121212',
     },
     text: {
-      primary: '#ffffff',
+      primary: '#F6F6F6',
       secondary: '#ffffffCC',
       disabled: '#a2a2a2',
     },

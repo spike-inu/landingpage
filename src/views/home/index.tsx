@@ -10,6 +10,7 @@ import Footer from 'views/footer';
 import Report from './report';
 import How from './how';
 import Roadmap from './roadmap';
+import Partnership from './partnership';
 
 const Wrapper = styled((props: StackProps) => {
   return <Stack bgcolor="background.default" position="relative" overflow="hidden" {...props} />;
@@ -25,9 +26,9 @@ const View: React.FC = () => {
       <Token />
       <Roadmap />
       <Partner />
+      <Partnership />
       <Report />
       <Contact />
-
       <Footer />
     </Wrapper>
   );

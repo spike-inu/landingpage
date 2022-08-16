@@ -1,24 +1,24 @@
-import { Grid, Stack, styled, Subtitle, Text, ButtonBase } from 'components';
+import { Grid, Stack, styled, Text, ButtonBase } from 'components';
 import { useDetect } from 'hooks';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { FeatureItemProps } from './types';
 
 const Wrapper = styled(ButtonBase)(
   ({ theme }) => `
     user-select: none;
-     border-radius:10px;
-     height:100%;
-     width:100%;
-    background-image: linear-gradient(black, ${theme.palette.background.default}), linear-gradient(#5F626C, #5f626c42,#5F626C);
-     border: double 3px transparent;
+    border-radius:10px;
+    height:100%;
+    width:100%;
+    background-image: linear-gradient(black, ${theme.palette.background.default}), linear-gradient(rgb(220 255 192 / 30%), #D4FFB1, #394132);
+    border: double 1px transparent;
     background-origin: border-box;
     background-clip: content-box, border-box;
     //  border-image-slice: 1;
 
     :hover {
         background-image:${theme.palette.background.default};
-        border: 3px solid ${theme.palette.primary.main};
-        .icon,.border-icon {
+        border: 1px solid ${theme.palette.primary.main};
+        .icon {
           stroke: ${theme.palette.primary.main};
           fill: ${theme.palette.primary.main};
           border-color: ${theme.palette.primary.main};
@@ -27,58 +27,87 @@ const Wrapper = styled(ButtonBase)(
     }
     .icon {
         transition:0.2s;
-        stroke: #C4C4C4;
-        fill:#C4C4C4;
-    }
-    .border-icon {
-      border: 3px solid #C4C4C4;
-      border-radius:50%;
-      padding:15px;   
-      transition:1s
+        stroke: ${theme.palette.primary.main};
+        fill: ${theme.palette.primary.main};
     }
     transition:0.5s
   `,
 );
 
-const Desktop: React.FC<FeatureItemProps> = ({ Icon, title, description }) => {
+const Desktop: React.FC<FeatureItemProps> = ({ Icon, title, description, highlight, index }) => {
   return (
-    <Grid item lg={4} md={6} sm={12}>
+    <Grid item md={6} sm={12} sx={{ transform: index % 2 === 1 ? 'translateY(30px)' : 'translateY(-30px)' }}>
       <Wrapper>
-        <Stack alignItems="center" textAlign="center" px={10} mt={15} spacing={4} height="100%">
-          <Stack className="border-icon">
-            <Icon className="icon" />
+        <Stack alignItems="flex-start" textAlign="left" px={10} mt={15} spacing={4} height="100%">
+          <Stack width="100%" alignItems="flex-end">
+            <Icon className="icon" color="primary" />
           </Stack>
-          <Subtitle
-            sx={
-              {
-                // minHeight: 70
-              }
-            }
-          >
-            {title}
-          </Subtitle>
-          <Text id="title">{description}</Text>
+          {highlight ? (
+            <Stack>
+              {title.split('\n').map((text) => (
+                <Stack key={text} direction="row">
+                  {text.split(highlight).map((each, index) => (
+                    <Fragment key={each}>
+                      {!!index && (
+                        <Text fontSize={22} fontWeight={600} lineHeight={1.25} color="primary.main">
+                          {highlight}
+                        </Text>
+                      )}
+                      <Text fontSize={22} fontWeight={600} lineHeight={1.25}>
+                        {each}
+                      </Text>
+                    </Fragment>
+                  ))}
+                </Stack>
+              ))}
+            </Stack>
+          ) : (
+            <Text fontSize={22} fontWeight={600} lineHeight={1.25}>
+              {title}
+            </Text>
+          )}
+          <Text sx={{ opacity: 0.7 }} id="title">
+            {description}
+          </Text>
         </Stack>
       </Wrapper>
     </Grid>
   );
 };
 
-const Mobile: React.FC<FeatureItemProps> = ({ Icon, title, description }) => {
+const Mobile: React.FC<FeatureItemProps> = ({ Icon, title, description, highlight }) => {
   return (
-    <Grid item xs={12} sm={12}>
+    <Grid item md={6} sm={12}>
       <Wrapper>
-        <Stack textAlign="center" p={5} spacing={5}>
-          <Stack direction="row" alignItems="center" textAlign="left" spacing={4}>
-            <Stack className="border-icon">
-              <Icon className="icon" width={28} height={28} />
-            </Stack>
-            <Stack flex={1}>
-              <Subtitle sx={{ fontWeight: 'bold' }}>{title}</Subtitle>
-            </Stack>
+        <Stack alignItems="flex-start" textAlign="left" px={6} mt={15} spacing={4} height="100%">
+          <Stack width="100%" alignItems="flex-end">
+            <Icon className="icon" color="primary" />
           </Stack>
-
-          <Text id="title" textAlign="left">
+          {highlight ? (
+            <Stack>
+              {title.split('\n').map((text) => (
+                <Stack key={text} direction="row">
+                  {text.split(highlight).map((each, index) => (
+                    <Fragment key={each}>
+                      {!!index && (
+                        <Text fontSize={22} fontWeight={600} lineHeight={1.25} color="primary.main">
+                          {highlight}
+                        </Text>
+                      )}
+                      <Text fontSize={22} fontWeight={600} lineHeight={1.25}>
+                        {each}
+                      </Text>
+                    </Fragment>
+                  ))}
+                </Stack>
+              ))}
+            </Stack>
+          ) : (
+            <Text fontSize={22} fontWeight={600} lineHeight={1.25}>
+              {title}
+            </Text>
+          )}
+          <Text sx={{ opacity: 0.7 }} id="title">
             {description}
           </Text>
         </Stack>

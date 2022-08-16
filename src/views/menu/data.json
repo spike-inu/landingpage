@@ -1,34 +1,32 @@
 {
-    "items": [
-        {
-            "href": "/",
-            "title": "Swap",
-            "subs": []
-        },
-        {
-            "href": "/",
-            "title": "Stake",
-            "subs": []
-        },
-        {
-            "href": "/",
-            "title": "Token",
-            "subs": []
-        },
-        {
-            "href": "/",
-            "title": "DAO",
-            "subs": []
-        },
-        {
-            "href": "/",
-            "title": "Docs",
-            "subs": []
-        },
-        {
-            "href": "/",
-            "title": "More",
-            "subs": []
-        }
-    ]
+  "items": [
+    {
+      "href": "/",
+      "title": "Swap",
+      "subs": []
+    },
+    {
+      "href": "/",
+      "title": "Future",
+      "subs": []
+    },
+    {
+      "href": "/",
+      "title": "Rewards",
+      "subs": [
+        { "title": "Staking", "href": "/" },
+        { "title": "Trade rewards", "href": "/" }
+      ]
+    },
+    {
+      "href": "/",
+      "title": "More",
+      "subs": [
+        { "title": "Audit report", "href": "/" },
+        { "title": "Referral", "href": "/" },
+        { "title": "Buy ICC", "href": "/" },
+        { "title": "Docs", "href": "/" }
+      ]
+    }
+  ]
 }

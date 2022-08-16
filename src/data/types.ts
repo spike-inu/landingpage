@@ -1,6 +1,10 @@
+import { IconProps } from 'assets/icons/types';
+import React from 'react';
+
 export interface TokenProps {
   name: string;
-  Icon: any;
+  Icon: React.FC | string;
+  props?: IconProps;
   index?: number;
 }
 
@@ -18,4 +22,9 @@ export interface SocialProps {
   href: string;
   index?: number;
   active?: boolean;
+}
+
+export interface PartnershipProps {
+  title: string;
+  description: string;
 }
