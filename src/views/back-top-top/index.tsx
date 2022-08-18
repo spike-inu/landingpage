@@ -44,9 +44,9 @@ const BackToTopButton = () => {
   });
 
   return (
-    <Box position="fixed" bottom={{ xs: 2, md: 24 }} right={{ xs: 2, md: 24 }}>
+    <Box position="fixed" bottom={{ xs: 16, md: 24 }} right={{ xs: 16, md: 24 }}>
       <Slide direction="up" in={visible}>
-        <Stack width={56} height={56}>
+        <Stack width={{ xs: 50, md: 56 }} height={{ xs: 50, md: 56 }}>
           <UpButton
             onClick={() => {
               if (window) {
