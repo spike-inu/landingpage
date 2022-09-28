@@ -26,10 +26,10 @@ const Menu: React.FC = (props) => {
         <Toolbar sx={{ bgcolor: '#121212' }}>
           <Container maxWidth="lg">
             <Box>
-              <Wrapper>
+              <Wrapper sx={{ py: 0 }}>
                 <Stack direction="row" spacing={10}>
                   <Logo />
-                  <Stack direction="row" spacing={4} alignItems="baseline">
+                  <Stack direction="row" spacing={4} alignItems="center">
                     {data.items.map((item, index) => (
                       <Item key={index} {...item} />
                     ))}

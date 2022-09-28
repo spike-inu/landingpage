@@ -14,7 +14,7 @@ const Wrapper = styled(Stack)({
 
 const Introduction = () => {
   return (
-    <Wrapper>
+    <Wrapper bgcolor="background.default">
       <Title textAlign="center" letterSpacing={12}>
         404
       </Title>
