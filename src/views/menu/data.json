@@ -6,26 +6,27 @@
       "subs": []
     },
     {
-      "href": "/",
+      "href": "/future",
       "title": "Future",
+      "subtitle": "Coming soon",
       "subs": []
     },
     {
-      "href": "/",
       "title": "Rewards",
+      "subtitle": "Coming soon",
       "subs": [
-        { "title": "Staking", "href": "/" },
-        { "title": "Trade rewards", "href": "/" }
+        { "title": "Staking", "href": "/staking" },
+        { "title": "Trade rewards", "href": "/trade-rewards" }
       ]
     },
     {
-      "href": "/",
       "title": "More",
+      "subtitle": "Coming soon",
       "subs": [
-        { "title": "Audit report", "href": "/" },
-        { "title": "Referral", "href": "/" },
-        { "title": "Buy ICC", "href": "/" },
-        { "title": "Docs", "href": "/" }
+        { "title": "Audit report", "href": "/audit-report" },
+        { "title": "Referral", "href": "/referral" },
+        { "title": "Buy ICC", "href": "/buy-icc" },
+        { "title": "Docs", "href": "/docs" }
       ]
     }
   ]

@@ -1,8 +1,9 @@
 export interface ItemProps {
   title: string;
-  href: string;
+  subtitle?: string;
+  href?: string;
   subs?: Array<{
     title: string;
-    href: string;
+    href?: string;
   }>;
 }

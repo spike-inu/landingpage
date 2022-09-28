@@ -15,6 +15,7 @@ import {
   Text,
   Toolbar,
 } from 'components';
+import Link from 'next/link';
 import React, { Fragment, useState } from 'react';
 import HideOnScroll from './components/HideOnScroll';
 import data from './data.json';
@@ -128,17 +129,21 @@ const MobileMenu: React.FC = (props) => {
                   <Collapse in={expanded.has(item.title)} timeout="auto">
                     <List component="div">
                       {item.subs.map((subItem) => (
-                        <ListItemButton key={subItem.title} sx={{ pl: 8, py: 2.5 }}>
-                          <Text fontWeight={600}>{subItem.title}</Text>
-                        </ListItemButton>
+                        <Link key={subItem.title} href={subItem.href}>
+                          <ListItemButton sx={{ pl: 8, py: 2.5 }}>
+                            <Text fontWeight={600}>{subItem.title}</Text>
+                          </ListItemButton>
+                        </Link>
                       ))}
                     </List>
                   </Collapse>
                 </Fragment>
               ) : (
-                <ListItemButton key={item.title} sx={{ mt: 4, py: 2.5 }}>
-                  <Text fontWeight={600}>{item.title}</Text>
-                </ListItemButton>
+                <Link key={item.title} href={item.href}>
+                  <ListItemButton sx={{ mt: 4, py: 2.5 }}>
+                    <Text fontWeight={600}>{item.title}</Text>
+                  </ListItemButton>
+                </Link>
               ),
             )}
           </List>

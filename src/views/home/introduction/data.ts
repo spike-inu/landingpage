@@ -1,7 +1,7 @@
 import { DashboardProps } from './types';
 
 const data = {
-  subtitle: 'Swap - Farm - Stake',
+  subtitle: 'Swap - Future - Stake',
   description:
     'iCrosschain is a cross-chain transaction platform deployed on multiple public chains (BSC, ETH, AVAX, FTM, SOL, MATIC, HECO, OEC, ARBITRUM, OPTIMISM , CRONOS supported)',
   dashboards: [
