@@ -23,9 +23,7 @@
       "title": "More",
       "subtitle": "Coming soon",
       "subs": [
-        { "title": "Audit report", "href": "/audit-report" },
         { "title": "Referral", "href": "/referral" },
-        { "title": "Buy ICC", "href": "/buy-icc" },
         { "title": "Docs", "href": "/docs" }
       ]
     }

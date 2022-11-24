@@ -10,7 +10,7 @@ const SquareStyled = styled(Square)`
 const Background = (props: StackProps) => (
   <Stack width="100%" height="100%" alignItems="center" justifyContent="center" {...props}>
     <Stack position="relative" height="100%">
-      <Image src="/images/ic-introduction.png" height="100%" loading="lazy" />
+      <Image src="/images/ic-introduction.webp" height="100%" loading="eager" />
       <Stack
         height="15%"
         width="15%"
