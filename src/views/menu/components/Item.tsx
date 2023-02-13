@@ -69,10 +69,16 @@ const View: FC<ItemProps> = ({ title, subtitle, href, subs }) => {
           >
             <Stack spacing={2} border="1px solid #434540" borderRadius={1} p={2} bgcolor="background.paper">
               {subs.map((sub, i) => (
-                <MenuItem key={i} onClick={handleClose} sx={{ py: 2, px: 6, mt: '0 !important', borderRadius: 1 }}>
-                  <Text color="text.primary" fontWeight="bold">
-                    {sub.title}
-                  </Text>
+                <MenuItem key={i} onClick={handleClose} sx={{ py: 2, px: 6, mt: '0 !important', borderRadius: 1 }} >
+                  <Link
+                    key={sub.href}
+                    href={sub.href}
+                    className="text-sm font-semibold text-white text-opacity-50 hover:text-primary"
+                  >
+                    <Text color="text.primary" fontWeight="bold">
+                      {sub.title}
+                    </Text>
+                  </Link>
                 </MenuItem>
               ))}
             </Stack>
