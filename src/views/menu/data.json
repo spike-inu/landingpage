@@ -1,12 +1,12 @@
 {
   "items": [
     {
-      "href": "/",
+      "href": "https://app.icrosschain.io/",
       "title": "Swap",
       "subs": []
     },
     {
-      "href": "/future",
+      "href": "https://app.icrosschain.io/",
       "title": "Future",
       "subtitle": "Coming soon",
       "subs": []
@@ -15,16 +15,28 @@
       "title": "Rewards",
       "subtitle": "Coming soon",
       "subs": [
-        { "title": "Staking", "href": "/staking" },
-        { "title": "Trade rewards", "href": "/trade-rewards" }
+        {
+          "title": "Staking",
+          "href": "https://app.icrosschain.io/liquidity/"
+        },
+        {
+          "title": "Trade rewards",
+          "href": "https://app.icrosschain.io/referral/"
+        }
       ]
     },
     {
       "title": "More",
-      "subtitle": "Coming soon",
+      "subtitle": "",
       "subs": [
-        { "title": "Referral", "href": "/referral" },
-        { "title": "Docs", "href": "/docs" }
+        {
+          "title": "Referral",
+          "href": "https://app.icrosschain.io/referral"
+        },
+        {
+          "title": "Docs",
+          "href": "https://icrosschain.gitbook.io/product-docs/"
+        }
       ]
     }
   ]
